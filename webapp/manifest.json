@@ -1,0 +1,521 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.itsgroup.brz.enterprises",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "portal": {
+                "uri": "/http/portal/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "viaCEP": {
+                "uri": "/ws/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "c4codataapi": {
+                "uri": "/http/call/odata/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "c4codatagetuser": {
+                "uri": "/http/poc/getuser/v2",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_MOCK": {
+                "uri": "/sap/c4c/odata/v1/c4codataapi/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_Z": {
+                "uri": "/sap/c4c/odata/cust/v1/z_parametro_empreendimento/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_SDK": {
+                "uri": "/sap/c4c/odata/cust/v1/simuladorappevents/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_AvailabilityMap": {
+                "uri": "/sap/c4c/odata/cust/v1/z_mapa_disponibilidade/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_ZSaleText": {
+                "uri": "/sap/c4c/odata/cust/v1/z_sales_price_list_text/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "C4C_Naturalness": {
+                "uri": "/sap/c4c/odata/cust/v1/naturalidade/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "com-itsgroup-brz-enterprises-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Enterprises",
+                    "action": "Display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "sap-icon://building"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.itsgroup.brz.enterprises.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        },
+        "dependencies": {
+            "minUI5Version": "1.84.19",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.itsgroup.brz.enterprises.i18n.i18n"
+                }
+            },
+            "appView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "mainView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "notFoundView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "city": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "priceTable": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "columnsPriceTable": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "enterprises": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "finishProposal": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "paymentConditions": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "componentsValues": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "proposedCalculation": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "paymentPlan": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "proposalEvaluation": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "resultProposed": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "images": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "blocks": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "broker": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "realEstate": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "sex": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "maritalStatus": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "marriageRegime": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "states": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "currentHousing": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "profession": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "incomeType": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "amortization": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "media": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "reasonForPurchase": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "involvedParties": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "saleForm": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "purchaseMethod": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "characteristic": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "nationality": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "naturalness": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "reasonPurchase": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "issuer": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "imagesEnterprise": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "paisesDDI": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "": {
+                "dataSource": "C4C_MOCK",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "C4C_Z": {
+                "dataSource": "C4C_Z",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "C4C_SDK": {
+                "dataSource": "C4C_SDK",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "C4C_AvailabilityMap": {
+                "dataSource": "C4C_AvailabilityMap",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "C4C_ZSaleText": {
+                "dataSource": "C4C_ZSaleText",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "C4C_Naturalness": {
+                "dataSource": "C4C_Naturalness",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "groupId": "$direct",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "portal": {
+                "dataSource": "portal",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "viaCEP": {
+                "dataSource": "viaCEP",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "synchronizationMode": "None",
+                    "autoExpandSelect": true,
+                    "defaultBindingMode": "TwoWay",
+                    "refreshAfterChange": true
+                }
+            },
+            "c4codataapi": {
+                "dataSource": "c4codataapi",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            },
+            "c4codatagetuser": {
+                "dataSource": "c4codatagetuser",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.itsgroup.brz.enterprises.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "main",
+                    "target": [
+                        "main"
+                    ]
+                },
+                {
+                    "pattern": "information/{orgId},{orgPath}",
+                    "name": "information",
+                    "target": [
+                        "information"
+                    ]
+                },
+                {
+                    "pattern": "simulateProposal",
+                    "name": "simulateProposal",
+                    "target": [
+                        "simulateProposal"
+                    ]
+                },
+                {
+                    "pattern": "availabilityMap/{orgId}",
+                    "name": "availabilityMap",
+                    "target": [
+                        "availabilityMap"
+                    ]
+                },
+                {
+                    "pattern": "priceList/{orgId}",
+                    "name": "priceList",
+                    "target": [
+                        "priceList"
+                    ]
+                },
+                {
+                    "pattern": "objectPriceList/{orgID},{productID},{objectPath}",
+                    "name": "objectPriceList",
+                    "target": [
+                        "objectPriceList"
+                    ]
+                },
+                {
+                    "pattern": "finishProposal/{orgID},{productID},{opportunityID}",
+                    "name": "finishProposal",
+                    "target": [
+                        "finishProposal"
+                    ]
+                },
+                {
+                    "pattern": "notFound",
+                    "name": "notFound",
+                    "target": [
+                        "notFound"
+                    ]
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "Main",
+                    "viewId": "main",
+                    "title": "{i18n>mainViewTitle}"
+                },
+                "information": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "Information",
+                    "viewId": "information",
+                    "title": "{i18n>informationTitle}"
+                },
+                "simulateProposal": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "SimulateProposal",
+                    "viewId": "simulateProposal",
+                    "title": "{i18n>simulateProposalTitle}"
+                },
+                "availabilityMap": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "AvailabilityMap",
+                    "viewId": "availabilityMap",
+                    "title": "{i18n>availabilityMapTitle}"
+                },
+                "priceList": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "PriceList",
+                    "viewId": "priceList",
+                    "viewLevel": 1,
+                    "title": "{i18n>priceListTitle}"
+                },
+                "objectPriceList": {
+					"viewName": "ObjectPriceList",
+					"viewId": "objectPriceList",
+					"viewLevel": 2,
+					"title": "{i18n>objectPriceListTitle}"
+				},
+                "finishProposal": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "FinishProposal",
+                    "viewId": "finishProposal",
+                    "title": "{i18n>finishProposalTitle}"
+                },
+                "notFound": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-itsgroup-brz-enterprises"
+    }
+}

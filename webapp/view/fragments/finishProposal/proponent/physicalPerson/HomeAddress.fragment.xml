@@ -1,0 +1,188 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <Title text="{i18n>proponentHomeAddressTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+		    id="gridHomeAddressContainer01"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 5fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentLabelCEP}"/>
+                <Input
+                    id="phisicalPersonHomeAddressCEP"
+					value="{
+                        path: 'fragment>/physicalPerson/homeAddress/CEP',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 9
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/CEP/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/CEP/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/CEP/ValueStateText}"
+					width="100%"
+                    change="onValidationPhysicalPerson"
+				/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelPublicPlace}"/>
+                <Input
+                    id="homeAddressPublicPlace"
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderPublicPlace}"
+                    value="{
+                        path: 'fragment>/physicalPerson/homeAddress/publicPlace',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 60
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/publicPlace/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/publicPlace/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/publicPlace/ValueStateText}"
+                    change="onValidationPhysicalPerson"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNumber}"/>
+                <Input
+                    id="homeAddressNumber"
+                    type="Number" 
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderNumber}"
+                    value="{
+                        path: 'fragment>/physicalPerson/homeAddress/number',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 10
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/number/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/number/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/number/ValueStateText}"
+                    change="onValidationPhysicalPerson"
+                />
+            </VBox>
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+		    id="gridHomeAddressContainer02"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="2fr 2fr 2fr 1fr" 
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelComplement}"/>
+                <Input
+                    id="homeAddressComplement"
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderComplement}"
+                    value="{
+                        path: 'fragment>/physicalPerson/homeAddress/complement',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 40
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/complement/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/complement/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/complement/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNeighborhood}"/>
+                <Input
+                    id="homeAddressNeighborhood"
+                    value="{
+                        path: 'fragment>/physicalPerson/homeAddress/neighborhood',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 40
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/neighborhood/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/neighborhood/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/neighborhood/ValueStateText}"
+                    change="onValidationPhysicalPerson"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelCounty}"/>
+                <Input
+                    id="homeAddressCounty"
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderCounty}"
+                    value="{
+                        path: 'fragment>/physicalPerson/homeAddress/county',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 40
+                        }
+                    }"
+					enabled="{fragment>/physicalPerson/homeAddress/State/county/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/county/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/county/ValueStateText}"
+                    change="onValidationPhysicalPerson"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelUF}"/>
+                <ComboBox
+                    id="homeAddressUF"
+					selectedKey="{fragment>/physicalPerson/homeAddress/UF}"
+					enabled="{fragment>/physicalPerson/homeAddress/State/UF/Enabled}"
+					valueState="{fragment>/physicalPerson/homeAddress/State/UF/ValueState}"
+					valueStateText="{fragment>/physicalPerson/homeAddress/State/UF/ValueStateText}"
+                    change="onValidationPhysicalPerson"
+					width="100%"
+					items="{states>/items}"
+				>
+					<core:Item key="{states>key}" text="{states>key} - {states>text}"/>
+				</ComboBox>
+            </VBox>
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+		    id="gridHomeAddressContainer03"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr 1fr 1fr" 
+			gridGap="0.5rem"
+		>
+            <VBox>
+            </VBox>
+
+            <VBox>
+            </VBox>
+
+            <VBox>
+            </VBox>
+
+            <VBox alignItems="End" justifyContent="Center">
+				<Button
+					id="buttonShowHideSpouse"
+					text="{texts>/buttonShowHideSpouse}"
+					type="Unstyled"
+					class="buttonShowSpouseAccept"
+                    visible="false"
+					press="onSpouseShowHide"
+				/>
+			</VBox>
+        </grid:CSSGrid>
+    </VBox>
+</core:FragmentDefinition>

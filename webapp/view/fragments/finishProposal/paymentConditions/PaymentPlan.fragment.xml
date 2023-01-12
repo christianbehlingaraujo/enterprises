@@ -1,0 +1,133 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <VBox class="sapUiSmallMarginTop" visible="{finishProposal>/viewTable/selectionViewPaymentPlan}">
+        <Title text="{i18n>paymentPlanTitle}" titleStyle="H4"/>
+
+        <table:Table 
+            id="paymentPlanTable"
+            rows="{paymentPlan>/items}"
+            visibleRowCount="{paymentPlan>/rowCount}"
+            selectionMode="None" 
+            width="100%"
+            class="sapUiSmallMarginTop"
+        >
+            <table:columns>
+                <table:Column id="ColumnDueDate" width="18%" hAlign="Center">
+                    <Label text="{i18n>paymentPlanDate}"/>
+                    <table:template>
+                        <Text text="{paymentPlan>dueDate}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center">
+                    <Label text="{i18n>paymentPlanTimeCourse}"/>
+                    <table:template>
+                        <Text text="{paymentPlan>timeCourse}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/signal/Visible}">
+                    <Label text="{i18n>paymentConditionsSignal}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>signal}" textAlign="Center"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/discountSale/Visible}">
+                    <Label text="{i18n>paymentConditionsDiscountSale}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>discountSale}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/deliveryKeys/Visible}">
+                    <Label text="{i18n>paymentConditionsDeliveryKeys}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>deliveryKeys}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/preKey/Visible}">
+                    <Label text="{i18n>paymentConditionsPreKey}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>preKey}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/proKey/Visible}">
+                    <Label text="{i18n>paymentConditionsProKey}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>proKey}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/percentageIncome/Visible}">
+                    <Label text="{i18n>paymentConditionsPercentageIncome}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>percIncome}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/intermediate/Visible}">
+                    <Label text="{i18n>paymentConditionsIntermediate}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>intermediate}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/FGTS/Visible}">
+                    <Label text="{i18n>paymentConditionsFGTS}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>FGTS}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/CEF/Visible}">
+                    <Label text="{i18n>paymentConditionsCEF}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>CEF}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="25%" hAlign="Center" visible="{paymentPlan>/State/subsidy/Visible}">
+                    <Label text="{i18n>paymentConditionsSubsidy}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>subsidy}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="18%" hAlign="Center">
+                    <Label text="{i18n>paymentPlanTotal}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{paymentPlan>ValueTotal}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+    </VBox>
+</c:FragmentDefinition>

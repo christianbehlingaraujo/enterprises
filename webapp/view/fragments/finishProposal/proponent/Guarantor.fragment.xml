@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+    <VBox id="ContainerGuarantor" height="200px" class="sapUiSmallMarginTop">
+		<Title text="{i18n>proponentGuarantorTitle}" titleStyle="H4"/>
+
+		<TabContainer 
+			id="TabContainerGuarantor"
+			showAddNewButton="true"
+			class="sapUiSmallMarginTop"
+			addNewButtonPress="onAddItemTabGuarantor"
+			itemClose="onCloseItemGuarantor">
+		</TabContainer>
+		<VBox class="tableFragment">
+			<Table
+				id="tableGuarantor"
+				width="auto"
+				class="sapUiNoMarginTop"
+				growing="true"
+				growingScrollToLoad="true"
+				sticky="ColumnHeaders,HeaderToolbar"
+				inset="false"
+				items="{guarantor>/items}"
+			>
+				<columns>
+					<Column id="guarantorColumnCPF" width="">
+						<Label text="{i18n>proponentLabelCPF}"/>
+					</Column>
+					<Column id="guarantorColumnName" width="">
+						<Label text="{i18n>proponentLabelName}"/>
+					</Column>
+					<Column id="guarantorColumnCellPhone" width="">
+						<Label text="{i18n>proponentLabelCellPhone}"/>
+					</Column>
+					<Column id="guarantorColumnEmail" width="">
+						<Label text="{i18n>proponentLabelEmail}"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPressItemGuarantor"
+					>
+						<cells>
+							<Text
+								text="{guarantor>cpf}"
+							/>
+							<Text
+								text="{guarantor>name}"
+							/>
+							<Text
+								text="{guarantor>mobile}"
+							/>
+							<Text
+								text="{guarantor>email}"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,223 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox>
+        <grid:CSSGrid
+		    id="gridContainerTab"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr 1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentLabelTypePeople}"/>
+				<RadioButtonGroup id="rbg1" width="100%" columns="2">
+					<RadioButton 
+						id="radioButtonPhysicalPerson" 
+						text="{i18n>proponentRadioButtonPhysicalPerson}" 
+						selected="{fragment>/physicalPerson/radioButtonCPF}"
+						valueState="{fragment>/physicalPerson/State/radioButtonCPF/ValueState}"
+						enabled="{fragment>/physicalPerson/State/radioButtonCPF/Enabled}"
+						select="onSelectRadioButton"
+					/>
+					<RadioButton 
+	    				id="radioButtonLegalPerson"
+						text="{i18n>proponentRadioButtonLegalPerson}"
+						selected="{fragment>/legalPerson/radioButtonCNPJ}"
+						valueState="{fragment>/legalPerson/State/radioButtonCNPJ/ValueState}"
+						enabled="{fragment>/legalPerson/State/radioButtonCNPJ/Enabled}"
+						select="onSelectRadioButton"
+					/>
+				</RadioButtonGroup> 
+			</VBox>
+
+			<VBox>
+				<VBox id="physicalPersonProportion">
+					<Label text="{i18n>proponentLabelProportion}" />
+					<Input
+						id="proponentPhysicalPersonProportion"
+						value="{fragment>/physicalPerson/proportion}"
+						valueState="{fragment>/physicalPerson/State/proportion/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/proportion/ValueStateText}"
+						enabled="{fragment>/physicalPerson/State/proportion/Enabled}" 
+					/>
+				</VBox>
+
+				<VBox id="legalPersonProportion" visible="false">
+					<Label text="{i18n>proponentLabelProportion}" />
+					<Input
+						id="proponentLegalPersonProportion"
+						value="{fragment>/legalPerson/proportion}"
+						valueState="{fragment>/legalPerson/State/proportion/ValueState}"
+						valueStateText="{fragment>/legalPerson/State/proportion/ValueStateText}"
+						enabled="{fragment>/legalPerson/State/proportion/Enabled}" 
+					/>
+				</VBox>
+			</VBox>
+
+			<VBox>
+				<VBox id="physicalPersonMainBuyer">
+					<Label/>
+					<CheckBox
+						id="proponentPhysicalPersonCheckBoxMainBuyer"
+						text="{i18n>proponentCheckTextMainBuyer}"
+						selected="{fragment>/physicalPerson/checkBoxMainBuyer}"
+						enabled="{fragment>/physicalPerson/State/checkBoxMainBuyer/Enabled}"
+						valueState="{fragment>/physicalPerson/State/checkBoxMainBuyer/ValueState}"
+						width="100%"
+						select="onCheckMainBuyer"
+					>
+						<dependents>
+							<Text text="{fragment>/physicalPerson/key}"/>
+						</dependents>
+					</CheckBox>
+				</VBox>
+
+				<VBox id="legalPersonMainBuyer" visible="false">
+					<Label/>
+					<CheckBox
+						id="proponentLegalPersonCheckBoxMainBuyer"
+						text="{i18n>proponentCheckTextMainBuyer}"
+						selected="{fragment>/legalPerson/checkBoxMainBuyer}"
+						enabled="{fragment>/legalPerson/State/checkBoxMainBuyer/Enabled}"
+						valueState="{fragment>/legalPerson/State/checkBoxMainBuyer/ValueState}"
+						width="100%"
+						select="onCheckMainBuyer"
+					>
+						<dependents>
+							<Text text="{fragment>/legalPerson/key}"/>
+						</dependents>
+					</CheckBox>
+				</VBox>
+			</VBox>
+
+			<VBox>
+			</VBox>
+		</grid:CSSGrid>
+
+		<VBox id="requiredDataPartFisica">
+			<grid:CSSGrid
+				id="gridContainerTab01"
+				class="sapUiSmallMarginTop"
+				gridTemplateRows="1fr"
+				gridTemplateColumns="20% 1fr 1fr"
+				gridGap="0.5rem"
+			>
+				<VBox>
+					<Label text="{i18n>proponentLabelCPF}"/>
+					<Input
+						id="proponentCPF"
+						placeholder="000.000.000-00"
+						value="{
+							path: 'fragment>/physicalPerson/CPFAndCNPJ',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 11
+							}
+						}"
+						enabled="{fragment>/physicalPerson/State/CPFAndCNPJ/Enabled}"
+						valueState="{fragment>/physicalPerson/State/CPFAndCNPJ/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/CPFAndCNPJ/ValueStateText}"
+						width="100%"
+						liveChange="onFormatedCPFAndCNPJ"
+					/>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelName}"/>
+					<Input 
+						id="proponentName"
+						placeholder="{i18n>proponentPlaceholderCorporateName}"
+						value="{
+							path: 'fragment>/physicalPerson/name',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 40
+							}
+						}"
+						enabled="{fragment>/physicalPerson/State/name/Enabled}"
+						valueState="{fragment>/physicalPerson/State/name/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/name/ValueStateText}"
+						change="onValidationPhysicalPerson"
+					/>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelSurname}"/>
+					<Input 
+						id="proponentSurname"
+						placeholder="{i18n>proponentPlaceholderCorporateSurname}"
+						value="{
+							path: 'fragment>/physicalPerson/surname',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 40
+							}
+						}"
+						enabled="{fragment>/physicalPerson/State/surname/Enabled}"
+						valueState="{fragment>/physicalPerson/State/surname/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/surname/ValueStateText}"
+						change="onValidationPhysicalPerson"
+					/>
+				</VBox>
+			</grid:CSSGrid>
+		</VBox>
+
+		<VBox id="additionalDataPartJuridica" visible="false">
+			<grid:CSSGrid
+				id="gridContainerTab1"
+				class="sapUiSmallMarginTop"
+				gridTemplateRows="1fr"
+				gridTemplateColumns="30% 1fr"
+				gridGap="0.5rem"
+			>
+				<VBox>
+					<Label text="{i18n>proponentLabelCNPJ}"/>
+					<Input
+						id="proponentCNPJ"
+						placeholder="00.000.000/0000-00"
+						value="{
+							path: 'fragment>/legalPerson/CPFAndCNPJ',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 18
+							}
+						}"
+						enabled="{fragment>/legalPerson/State/CPFAndCNPJ/Enabled}"
+						valueState="{fragment>/legalPerson/State/CPFAndCNPJ/ValueState}"
+						valueStateText="{fragment>/legalPerson/State/CPFAndCNPJ/ValueStateText}"
+						width="100%"
+						liveChange="onFormatedCPFAndCNPJ"
+					/>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelNameJuridica}"/>
+					<Input
+						id="proponentNameJuridica"
+						placeholder="{i18n>proponentPlaceholderCorporateName}"
+						value="{
+							path: 'fragment>/legalPerson/name',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 120
+							}
+						}"
+						enabled="{fragment>/legalPerson/State/name/Enabled}"
+						valueState="{fragment>/legalPerson/State/name/ValueState}"
+						valueStateText="{fragment>/legalPerson/State/name/ValueStateText}"
+						change="onValidationLegalPerson"
+					/>	
+				</VBox>
+
+			</grid:CSSGrid>
+		</VBox>
+    </VBox>
+</core:FragmentDefinition>

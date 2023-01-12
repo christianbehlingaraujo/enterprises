@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>   
+    <f:SimpleForm 
+        id="attorneyPhysicalPersonInstance" 
+        editable="true"
+        width="100%"
+    >
+        <core:Fragment 
+            fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.attorney.AttorneyData" 
+            type="XML"
+        />
+    </f:SimpleForm>    
+</core:FragmentDefinition>

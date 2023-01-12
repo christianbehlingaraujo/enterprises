@@ -1,0 +1,95 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMargin">
+        <Title text="{i18n>brokerFormTitle}" titleStyle="H4"/>
+        <grid:CSSGrid
+			id="gridContainer"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+    		gridTemplateColumns="1fr 1fr 1fr"
+			gridGap="1rem"
+		>
+            <VBox>
+                <grid:CSSGrid
+                    id="gridContent"
+                    gridTemplateRows="1fr"
+                    gridTemplateColumns="1fr 8%"
+                    gridGap="0.5rem"
+                >
+                    <VBox>
+                        <Label text="{i18n>brokerLabelBroker}" />
+                        <ComboBox
+                            id="broker"
+                            visible="{finishProposal>/State/broker/Visible}"
+                            enabled="{finishProposal>/State/broker/Enabled}"
+                            valueState="{finishProposal>/State/broker/ValueState}"
+                            valueStateText="{finishProposal>/State/broker/ValueStateText}"
+                            selectedKey="{finishProposal>/broker}"
+                            items="{broker>/items}"
+                            width="100%"
+                            change="onChangeBroker"
+                        >
+                            <core:Item key="{broker>brokerID}" text="{broker>name}"/>
+                        </ComboBox>
+                    </VBox>
+
+                    <VBox>
+                        <Label />
+                        <Button 
+                            id="reset"
+                            tooltip="{i18n>brokerButtonReset}"
+                            icon="sap-icon://reset"
+                            press="onPressResetBrokerAndRealEstate"
+                            visible="{finishProposal>/State/broker/Visible}"
+                            enabled="{finishProposal>/State/broker/Enabled}"
+                        />
+                    </VBox>
+                </grid:CSSGrid>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>brokerLabelReserves}" />
+                <Input
+                    id="reservations"
+                    placeholder="0/0"
+                    value="{finishProposal>/reservations}"
+                    visible="{finishProposal>/State/reservations/Visible}"
+					enabled="{finishProposal>/State/reservations/Enabled}"
+                    width="100%"
+                />
+            </VBox>
+
+  
+           <VBox justifyContent="End"  >
+                <CheckBox
+                    id="exterior"
+                    text="{i18n>brokerCheckBoxTextExterior}"
+                    selected="{finishProposal>/exterior}"
+					enabled="{finishProposal>/State/exterior/Enabled}"
+					valueState="{finishProposal>/State/exterior/ValueState}"
+                    width="100%"
+                />
+           </VBox>
+        </grid:CSSGrid>  
+          
+        <VBox class="sapUiSmallMarginTop">
+            <Label text="{i18n>brokerLabelRealEstate}" />
+            <ComboBox
+                id="realEstate"
+                visible="{finishProposal>/State/realEstate/Visible}"
+				enabled="{finishProposal>/State/realEstate/Enabled}"
+                valueState="{finishProposal>/State/realEstate/ValueState}"
+                valueStateText="{finishProposal>/State/realEstate/ValueStateText}"
+				selectedKey="{finishProposal>/realEstate}"
+				items="{realEstate>/items}"
+                width="100%"
+                change="onChangeRealEstate"
+            >
+                <core:Item key="{realEstate>partnerID}" text="{realEstate>name}"/>
+            </ComboBox>
+        </VBox>
+	</VBox>
+</core:FragmentDefinition>

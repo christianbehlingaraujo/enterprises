@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm 
+        id="legalRepresentativeInstance" 
+        editable="true"
+        layout="ResponsiveGridLayout"
+        width="100%"
+    >
+        <core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.legalPerson.legalRepresentative.ResponsibleData" 
+			type="XML"
+		/>
+    </f:SimpleForm>
+</core:FragmentDefinition>

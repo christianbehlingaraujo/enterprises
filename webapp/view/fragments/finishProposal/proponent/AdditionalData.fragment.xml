@@ -1,0 +1,363 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox>
+		<VBox id="legalPersonContact" visible="false">
+			<grid:CSSGrid
+				id="gridContainerTab02LegalPerson"
+				class="MarginLabelInput"
+				gridTemplateRows="1fr"
+				gridTemplateColumns="1fr 1fr 1fr"
+				gridGap="0.5rem"
+			>
+				<VBox>
+					<Label text="{i18n>proponentLabelCellPhone}"/>
+
+					<VBox class="contentPhone">
+						<VBox width="30%" >
+							<ComboBox
+								id="legalPersonMobileDDI"
+								showSecondaryValues ="true"
+								filterSecondaryValues="true"
+								selectedKey="{fragment>/legalPerson/mobileDDI}"
+								enabled="{fragment>/legalPerson/State/mobileDDI/Enabled}"
+								valueState="{fragment>/legalPerson/State/mobileDDI/ValueState}"
+								valueStateText="{fragment>/legalPerson/State/mobileDDI/ValueStateText}"
+								items="{ 
+									path: 'paisesDDI>/items',
+									sorter: { path: 'name' },
+									length: '2000'
+								}"	
+							>
+								<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+							</ComboBox>
+						</VBox>
+
+						<VBox width="100%">
+							<Input
+								id="legalPersonDataCellPhone"
+								placeholder="(00) 0 0000-0000"
+								value="{
+									path: 'fragment>/legalPerson/mobile',
+									type : 'sap.ui.model.type.String',
+									constraints : {
+										minLength: 1,
+										maxLength: 15
+									}
+								}"
+								enabled="{fragment>/legalPerson/State/mobile/Enabled}"
+								valueState="{fragment>/legalPerson/State/mobile/ValueState}"
+								valueStateText="{fragment>/legalPerson/State/mobile/ValueStateText}"
+								width="100%"
+								liveChange=""
+								change="onValidationLegalPerson"
+							/>
+						</VBox>	
+					</VBox>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelEmail}"/>
+					<Input
+						id="legalPersonDataEmail"
+						placeholder="{i18n>proponentPlaceholderEmail}"
+						value="{
+							path: 'fragment>/legalPerson/email',
+							type : '.customEmailType'
+						}"
+						enabled="{fragment>/legalPerson/State/email/Enabled}"
+						valueState="{fragment>/legalPerson/State/email/ValueState}"
+						valueStateText="{fragment>/legalPerson/State/email/ValueStateText}"
+						width="100%"
+						change="onValidationLegalPerson"
+					/>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelTelePhone}"/>
+
+					<VBox class="contentPhone">
+						<VBox width="30%" >
+							<ComboBox
+								id="legalPersonPhoneDDI"
+								showSecondaryValues ="true"
+								filterSecondaryValues="true"
+								selectedKey="{fragment>/legalPerson/phoneDDI}"
+								enabled="{fragment>/legalPerson/State/phoneDDI/Enabled}"
+								valueState="{fragment>/legalPerson/State/phoneDDI/ValueState}"
+								valueStateText="{fragment>/legalPerson/State/phoneDDI/ValueStateText}"
+								items="{ 
+									path: 'paisesDDI>/items',
+									sorter: { path: 'name' },
+									length: '2000'
+								}"	
+							>
+								<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+							</ComboBox>
+						</VBox>
+
+						<VBox width="100%">
+							<Input
+								id="legalPersonDataTelePhone"
+								placeholder="+00 (00) 0 0000-0000"
+								value="{
+									path: 'fragment>/legalPerson/phone',
+									type : 'sap.ui.model.type.String',
+									constraints : {
+										minLength: 1,
+										maxLength: 15
+									}
+								}"
+								enabled="{fragment>/legalPerson/State/phone/Enabled}"
+								valueState="{fragment>/legalPerson/State/phone/ValueState}"
+								valueStateText="{fragment>/legalPerson/State/phone/ValueStateText}"
+								width="100%"
+								change="onValidationLegalPerson"
+								liveChange="onFormatePhone"
+							/>
+						</VBox>
+					</VBox>
+				</VBox>
+			</grid:CSSGrid>
+		</VBox>
+        
+
+		<!--~~ Dados adicionais Pessoa Física ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->		
+		<VBox id="AdditionalDataPhysicalPerson01" class="MarginLabelInput">
+			<grid:CSSGrid
+				id="gridContainerTab02PhysicalPerson"
+				gridTemplateRows="1fr"
+				gridTemplateColumns="1fr 1fr 1fr"
+				gridGap="0.5rem"
+			>
+				<VBox>
+					<Label text="{i18n>proponentLabelCellPhone}"/>
+	
+					<VBox class="contentPhone">
+						<VBox width="30%" >
+							<ComboBox
+								id="physicalPersonMobileDDI"
+								showSecondaryValues ="true"
+								filterSecondaryValues="true"
+								selectedKey="{fragment>/physicalPerson/mobileDDI}"
+								enabled="{fragment>/physicalPerson/State/mobileDDI/Enabled}"
+								valueState="{fragment>/physicalPerson/State/mobileDDI/ValueState}"
+								valueStateText="{fragment>/physicalPerson/State/mobileDDI/ValueStateText}"
+								items="{ 
+									path: 'paisesDDI>/items',
+									sorter: { path: 'name' },
+									length: '2000'
+								}"	
+							>
+								<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+							</ComboBox>
+						</VBox>
+
+						<VBox width="100%">
+							<Input
+								id="physicalPersonDataCellPhone"
+								placeholder="(00) 0 0000-0000"
+								value="{
+									path: 'fragment>/physicalPerson/mobile',
+									type : 'sap.ui.model.type.String',
+									constraints : {
+										minLength: 1,
+										maxLength: 15
+									}
+								}"
+								enabled="{fragment>/physicalPerson/State/mobile/Enabled}"
+								valueState="{fragment>/physicalPerson/State/mobile/ValueState}"
+								valueStateText="{fragment>/physicalPerson/State/mobile/ValueStateText}"
+								width="100%"
+								change="onValidationPhysicalPerson"
+								liveChange="onFormatePhone"
+							/>
+						</VBox>
+					</VBox>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelEmail}"/>
+					<Input
+						id="physicalPersonDataEmail"
+						placeholder="{i18n>proponentPlaceholderEmail}"
+						value="{
+							path: 'fragment>/physicalPerson/email',
+							type : '.customEmailType'	
+						}"
+						enabled="{fragment>/physicalPerson/State/email/Enabled}"
+						valueState="{fragment>/physicalPerson/State/email/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/email/ValueStateText}"
+						width="100%"
+						change="onValidationPhysicalPerson"
+					/>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelTelePhone}"/>
+
+					<VBox class="contentPhone">
+						<VBox width="30%" >
+							<ComboBox
+								id="physicalPersonPhoneDDI"
+								showSecondaryValues ="true"
+								filterSecondaryValues="true"
+								selectedKey="{fragment>/physicalPerson/phoneDDI}"
+								enabled="{fragment>/physicalPerson/State/phoneDDI/Enabled}"
+								valueState="{fragment>/physicalPerson/State/phoneDDI/ValueState}"
+								valueStateText="{fragment>/physicalPerson/State/phoneDDI/ValueStateText}"
+								items="{ 
+									path: 'paisesDDI>/items',
+									sorter: { path: 'name' },
+									length: '2000'
+								}"	
+							>
+								<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+							</ComboBox>
+						</VBox>
+
+						<VBox width="100%">
+							<Input
+								id="physicalPersonDataTelePhone"
+								placeholder="+00 (00) 0 0000-0000"
+								value="{
+									path: 'fragment>/physicalPerson/phone',
+									type : 'sap.ui.model.type.String',
+									constraints : {
+										minLength: 1,
+										maxLength: 15
+									}
+								}"
+								enabled="{fragment>/physicalPerson/State/phone/Enabled}"
+								valueState="{fragment>/physicalPerson/State/phone/ValueState}"
+								valueStateText="{fragment>/physicalPerson/State/phone/ValueStateText}"
+								width="100%"
+								change="onValidationPhysicalPerson"
+								liveChange="onFormatePhone"
+							/>
+						</VBox>
+					</VBox>
+				</VBox>
+			</grid:CSSGrid> 
+
+			<grid:CSSGrid
+				id="gridContainerPhysicalPerson"
+				gridTemplateRows="1fr 1fr"
+				gridTemplateColumns="1fr 1fr 1fr"
+				gridGap="0.5rem"
+			>
+				<VBox>
+					<Label text="{i18n>proponentLabelSex}"/>
+					<ComboBox
+						id="proponentSex"
+						selectedKey="{fragment>/physicalPerson/sex}"
+						enabled="{fragment>/physicalPerson/State/sex/Enabled}"
+						valueState="{fragment>/physicalPerson/State/sex/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/sex/ValueStateText}"
+						width="100%"
+						items="{sex>/items}"
+					>
+						<core:Item key="{sex>Code}" text="{sex>Description}" />
+					</ComboBox>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelBirth}"/>
+					<DatePicker
+						id="proponentBirth"
+						valueFormat="dd/MM/yyyy"
+						displayFormat="short"
+						placeholder="dd/mm/aaaa"
+						value="{fragment>/physicalPerson/birth}"
+						enabled="{fragment>/physicalPerson/State/birth/Enabled}"
+						valueState="{fragment>/physicalPerson/State/birth/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/birth/ValueStateText}"
+						width="100%"
+						change="onValidationPhysicalPerson"
+					/>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelMaritalStatus}"/>
+					<ComboBox
+						id="proponentMaritalStatus"
+						selectedKey="{fragment>/physicalPerson/maritalStatus}"
+						enabled="{fragment>/physicalPerson/State/maritalStatus/Enabled}"
+						valueState="{fragment>/physicalPerson/State/maritalStatus/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/maritalStatus/ValueStateText}"
+						width="100%"
+						items="{maritalStatus>/items}"
+						change="onSelectedMarried"
+					>
+						<core:Item key="{maritalStatus>Code}" text="{maritalStatus>Description}" />
+					</ComboBox>
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelMarriageRegime}"/>
+					<ComboBox
+						id="proponentMarriageRegime"
+						selectedKey="{fragment>/physicalPerson/marriageRegime}"
+						enabled="{fragment>/physicalPerson/State/marriageRegime/Enabled}"
+						valueState="{fragment>/physicalPerson/State/marriageRegime/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/marriageRegime/ValueStateText}"
+						width="100%"
+						items="{marriageRegime>/items}"
+					>
+						<core:Item key="{marriageRegime>Code}" text="{marriageRegime>Description}" />
+					</ComboBox>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelMarriageDate}"/>
+					<DatePicker
+						id="proponentMarriageDate"
+						valueFormat="dd/MM/yyyy"
+						displayFormat="short"
+						placeholder="dd/mm/aaaa"
+						value="{fragment>/physicalPerson/weddingDate}"
+						enabled="{fragment>/physicalPerson/State/weddingDate/Enabled}"
+						valueState="{fragment>/physicalPerson/State/weddingDate/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/weddingDate/ValueStateText}"
+						width="100%"
+					/>	
+				</VBox>
+
+				<VBox>
+					<Label text="{i18n>proponentLabelRG}"/>
+					<Input
+						id="proponentRG"
+						value="{
+							path: 'fragment>/physicalPerson/RGNumber',
+							type : 'sap.ui.model.type.String',
+							constraints : {
+								minLength: 1,
+								maxLength: 40
+							}
+						}"
+						enabled="{fragment>/physicalPerson/State/RGNumber/Enabled}"
+						valueState="{fragment>/physicalPerson/State/RGNumber/ValueState}"
+						valueStateText="{fragment>/physicalPerson/State/RGNumber/ValueStateText}"
+						width="100%"
+						change="onValidationPhysicalPerson"
+					/>	
+				</VBox>
+			</grid:CSSGrid>
+		</VBox>
+
+
+		<!--~~ Dados adicionais Pessoa Jurídica ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.legalPerson.LegalPerson" 
+			type="XML"
+		/>
+
+		 <!--~~ Dados adicionais Pessoa Física ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->	
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.PhysicalPerson" 
+			type="XML"
+		/>
+    </VBox>
+</core:FragmentDefinition>

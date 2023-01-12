@@ -1,0 +1,427 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <Title text="{i18n>proponentBiddersSpouseDataTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+		    id="gridBiddersSpouseDataContainer01"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 2fr 2fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentLabelCPF}"/>
+                <Input
+					id="biddersSpouseDataCPF"
+					placeholder="000.000.000-00"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/cpf',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 11
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/cpf/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/cpf/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/cpf/ValueStateText}"
+					width="100%"
+					change="onSearchBiddersSpouse"
+				/>
+            </VBox>
+
+            <VBox>
+				<Label text="{i18n>proponentLabelName}"/>
+				<Input 
+					id="biddersSpouseDataName"
+					placeholder="{i18n>proponentBidderSpousePlaceholderName}"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/name',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/name/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/name/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/name/ValueStateText}"
+					change="onValidationBidderSpouse"
+				/>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelSurname}"/>
+				<Input 
+					id="biddersSpouseDataSurname"
+					placeholder="{i18n>proponentBidderSpousePlaceholderSurname}"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/surname',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/surname/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/surname/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/surname/ValueStateText}"
+					change="onValidationBidderSpouse"
+				/>	
+			</VBox>
+
+            <!--<VBox>
+				<Label text="{i18n>proponentLabelProportion}" />
+				<Input
+					id="biddersSpouseDataProportion"
+					value="{fragment>/physicalPerson/biddersSpouseData/proportion}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/proportion/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/proportion/ValueStateText}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/proportion/Enabled}"
+				/>
+			</VBox>-->
+        </grid:CSSGrid>
+
+		<grid:CSSGrid
+		    id="gridBiddersSpouseDataContainer02"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr 1fr 1fr"
+			gridTemplateColumns="1fr 1fr 1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentLabelCellPhone}"/>
+	
+				<VBox class="contentPhone">
+					<VBox width="30%" >
+						<ComboBox
+							id="biddersSpouseDataMobileDDI"
+							showSecondaryValues ="true"
+							filterSecondaryValues="true"
+							selectedKey="{fragment>/physicalPerson/biddersSpouseData/mobileDDI}"
+							enabled="{fragment>/physicalPerson/biddersSpouseData/State/mobileDDI/Enabled}"
+							valueState="{fragment>/physicalPerson/biddersSpouseData/State/mobileDDI/ValueState}"
+							valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/mobileDDI/ValueStateText}"
+							change="onValidationBidderSpouse"
+							items="{ 
+								path: 'paisesDDI>/items',
+								sorter: { path: 'name' },
+								length: '2000'
+							}"	
+						>
+							<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+						</ComboBox>
+					</VBox>
+
+					<VBox width="100%">
+						<Input
+							id="biddersSpouseDataCellPhone"
+							placeholder="(00) 0 0000-0000"
+							value="{
+								path: 'fragment>/physicalPerson/biddersSpouseData/mobile',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1,
+									maxLength: 15
+								}
+							}"
+							enabled="{fragment>/physicalPerson/biddersSpouseData/State/mobile/Enabled}"
+							valueState="{fragment>/physicalPerson/biddersSpouseData/State/mobile/ValueState}"
+							valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/mobile/ValueStateText}"
+							width="100%"
+							change="onValidationBidderSpouse"
+							liveChange="onFormatePhone"
+						/>
+					</VBox>
+				</VBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelEmail}"/>
+				<Input
+					id="biddersSpouseDataEmail"
+					placeholder="{i18n>proponentPlaceholderEmail}"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/email',
+						type : '.customEmailType'
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/email/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/email/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/email/ValueStateText}"
+					change="onValidationBidderSpouse"
+					width="100%"
+				/>	
+			</VBox>
+
+            <VBox>
+				<Label text="{i18n>proponentLabelTelePhone}"/>
+
+				<VBox class="contentPhone">
+					<VBox width="30%" >
+						<ComboBox
+							id="biddersSpouseDataPhoneDDI"
+							showSecondaryValues ="true"
+							filterSecondaryValues="true"
+							selectedKey="{fragment>/physicalPerson/biddersSpouseData/phoneDDI}"
+							enabled="{fragment>/physicalPerson/biddersSpouseData/State/phoneDDI/Enabled}"
+							valueState="{fragment>/physicalPerson/biddersSpouseData/State/phoneDDI/ValueState}"
+							valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/phoneDDI/ValueStateText}"
+							items="{ 
+								path: 'paisesDDI>/items',
+								sorter: { path: 'name' },
+								length: '2000'
+							}"	
+						>
+							<core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+						</ComboBox>
+					</VBox>
+
+					<VBox width="100%">
+						<Input
+							id="biddersSpouseDataTelePhone"
+							placeholder="(00) 0 0000-0000"
+							value="{
+								path: 'fragment>/physicalPerson/biddersSpouseData/phone',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1,
+									maxLength: 15
+								}
+							}"
+							enabled="{fragment>/physicalPerson/biddersSpouseData/State/phone/Enabled}"
+							valueState="{fragment>/physicalPerson/biddersSpouseData/State/phone/ValueState}"
+							valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/phone/ValueStateText}"
+							width="100%"
+							change="onValidationBidderSpouse"
+						/>
+					</VBox>
+				</VBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelSex}"/>
+				<ComboBox
+					id="biddersSpouseDataSex"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/sex}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/sex/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/sex/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/sex/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{sex>/items}"
+				>
+					<core:Item key="{sex>Code}" text="{sex>Description}" />
+				</ComboBox>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelBirth}"/>
+				<DatePicker
+					id="biddersSpouseDataBirth"
+					valueFormat="dd/MM/yyyy"
+					displayFormat="short"
+					placeholder="dd/mm/aaaa"
+					value="{fragment>/physicalPerson/biddersSpouseData/birth}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/birth/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/birth/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/birth/ValueStateText}"
+					change="onValidationBidderSpouse"
+					width="100%"
+				/>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelRG}"/>
+				<Input
+					id="biddersSpouseDataRG"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/RGNumber',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/RGNumber/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/RGNumber/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/RGNumber/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+				/>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonIssuer}"/>
+				<ComboBox
+					id="biddersSpouseDataIssuer"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/RGIssuer}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/RGIssuer/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/RGIssuer/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/RGIssuer/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{
+						path: 'issuer>/items',
+						length: '2000'
+					}"
+				>
+					<core:Item key="{issuer>Code}" text="{issuer>Code} - {issuer>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonUF}"/>
+				<ComboBox
+					id="biddersSpouseDataUF"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/UF}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/UF/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/UF/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/UF/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{states>/items}"
+				>
+					<core:Item key="{states>key}" text="{states>key} - {states>text}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonNaturalness}"/>
+				<ComboBox 
+					id="biddersSpouseDataNaturalness"
+					placeholder="{i18n>proponentPhysicalPersonNaturalnessPlaceholder}"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/naturalness}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/naturalness/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/naturalness/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/naturalness/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{
+						path: 'naturalness>/items',
+						length: '6000',
+						sorter: { path: 'Description' }
+					}"
+				>
+					<core:ListItem key="{naturalness>Code}" text="{naturalness>Code} - {naturalness>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonNationality}"/>
+				<ComboBox
+					id="biddersSpouseDataNationality"
+					placeholder="{i18n>proponentPhysicalPersonNationalityPlaceholder}"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/nationality}"
+					enabled="{fragment>/physicalPerson/State/biddersSpouseData/nationality/Enabled}"
+					valueState="{fragment>/physicalPerson/State/biddersSpouseData/nationality/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/biddersSpouseData/nationality/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{
+						path: 'nationality>/items',
+						length: '2000'
+					}"
+				>
+					<core:ListItem key="{nationality>Code}" text="{nationality>Code} - {nationality>Description}"/>
+				</ComboBox>
+			</VBox>
+
+            <VBox>
+				<Label text="{i18n>proponentPhysicalPersonMotherName}"/>
+				<Input 
+					id="biddersSpouseDataMontherName"
+					placeholder="{i18n>proponentPhysicalPersonMotherNamePlaceholder}"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/motherName',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/motherName/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/motherName/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/motherName/ValueStateText}"
+					width="100%"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonFatherName}"/>
+				<Input 
+					id="biddersSpouseDataFatherName"
+					placeholder="{i18n>proponentPhysicalPersonFatherNamePlaceholder}"
+					value="{
+						path: 'fragment>/physicalPerson/biddersSpouseData/fatherName',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+					}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/fatherName/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/fatherName/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/fatherName/ValueStateText}"
+					width="100%"
+				/>
+			</VBox>
+		</grid:CSSGrid>
+
+		<grid:CSSGrid
+		    id="gridBiddersSpouseDataContainer03"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationMonthlyIncome}"/>
+				<Input
+					id="biddersSpouseDataMonthlyIncome"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/physicalPerson/biddersSpouseData/monthlyIncome}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/monthlyIncome/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/monthlyIncome/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/monthlyIncome/ValueStateText}"
+					change="onValidationBidderSpouse"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonProfession}"/>
+				<ComboBox
+					id="biddersSpouseDataProfession"
+					selectedKey="{fragment>/physicalPerson/biddersSpouseData/profession}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/profession/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/profession/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/profession/ValueStateText}"
+					width="100%"
+					change="onValidationBidderSpouse"
+					items="{
+						path: 'profession>/items',
+                        length: '2000'
+					}"
+				>
+					<core:ListItem key="{profession>Code}" text="{profession>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<!--<VBox>
+				<Label text="{i18n>proponentPhysicalPersonRegistryOffice}"/>
+				<Input
+					id="biddersSpouseDataRegistryOffice"
+					value="{fragment>/physicalPerson/biddersSpouseData/notaryRegistryFirm}"
+					enabled="{fragment>/physicalPerson/biddersSpouseData/State/notaryRegistryFirm/Enabled}"
+					valueState="{fragment>/physicalPerson/biddersSpouseData/State/notaryRegistryFirm/ValueState}"
+					valueStateText="{fragment>/physicalPerson/biddersSpouseData/State/notaryRegistryFirm/ValueStateText}"
+					width="100%"
+				/>
+			</VBox>-->
+		</grid:CSSGrid>
+    </VBox>
+</core:FragmentDefinition>

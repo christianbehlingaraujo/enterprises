@@ -1,0 +1,300 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	controllerName="com.itsgroup.brz.enterprises.controller.Main" 
+	displayBlock="true">
+	<NavContainer id="navContainer">
+		<pages>
+			<Page id="contentPage" title="{i18n>mainViewTitle}" titleLevel="H1">
+				<content>
+					<VBox class="containerButtonsNUADDRDSF">
+						<VBox class="contentButtonsNUADDRD">
+							<VBox class="contentButtonsNUA">
+								<VBox class="buttonsNUA">
+									<Button 
+										id="buttonName" 
+										type="Default"
+										text="{i18n>mainName}"
+										icon="sap-icon://alphabetical-order"
+										width="100%"
+										press="onSortEnterprises"
+									/>
+								</VBox>
+
+								<VBox class="buttonsNUA">
+									<Button
+										id="buttonUnitAvailable" 
+										type="Default"
+										text="{i18n>mainAvailableUnits}"
+										icon="sap-icon://building"
+										width="100%"
+										press="onSortEnterprises"
+									/>
+								</VBox>
+							</VBox>
+							<VBox class="contentButtonsDDRD">
+								<VBox class="buttonsDDRD">
+									<Button
+										id="buttonDeliveryDate" 
+										type="Default" 
+										text="{i18n>mainDeliveryDate}" 
+										icon="sap-icon://appointment-2"
+										width="100%"
+										press="onSortEnterprises"
+									/>
+								</VBox>
+
+								<VBox class="buttonsDDRD">
+									<Button  
+										id="buttonReleaseDate" 
+										type="Default"
+										text="{i18n>mainReleaseDate}"
+										icon="sap-icon://appointment-2"
+										width="100%"
+										press="onSortEnterprises"
+									/>
+								</VBox>
+							</VBox>
+						</VBox>
+						<VBox class="contentButtonsSF">
+							<SearchField
+								id="searchField"
+								placeholder="{i18n>mainSearch}"
+								search="onSearchEnterprises"
+								width="100%"
+							/>
+						</VBox>
+					</VBox>
+					<VBox class="containerFilters">
+						<VBox class="contentFilters1">
+							<VBox class="contentFiltersPTWSTC">
+								<VBox class="contentFiltersPTWS">
+									<core:Icon
+										src="sap-icon://building"
+										class="size1"
+										color="#031E48"
+									/>
+									<Label text="{i18n>mainPropertyType}"/>
+								</VBox>
+
+								<VBox class="contentFiltersComboBoxPT">
+									<ComboBox 
+										id="propertyType"
+										change="onFilterTab"
+										selectedKey="{mainView>/selectionPropertyType}"
+										enabled="{mainView>/State/selectionPropertyType/Enabled}"
+										valueState="{mainView>/State/selectionPropertyType/ValueState}"
+										valueStateText="{mainView>/State/selectionPropertyType/ValueStateText}"
+										width="100%"
+									>
+										<core:Item key="Todas" text="Todas"/>
+									</ComboBox>
+								</VBox>
+							</VBox>
+
+							
+							<VBox class="contentFiltersPTWSTC">
+								<VBox class="contentFiltersPTWS">
+									<core:Icon
+										src="sap-icon://vertical-bar-chart"
+										class="size1"
+										color="#031E48"
+									/>
+									<Label text="{i18n>mainWorkStage}"/>
+								</VBox>
+
+								<VBox class="contentFiltersComboBoxWS">
+									<ComboBox 
+										id="workStage"
+										change="onFilterTab"
+										selectedKey="{mainView>/selectionWorkStage}"
+										enabled="{mainView>/State/selectionWorkStage/Enabled}"
+										valueState="{mainView>/State/selectionWorkStage/ValueState}"
+										valueStateText="{mainView>/State/selectionWorkStage/ValueStateText}"
+										width="100%"
+									>
+										<core:Item key="Todas" text="Todas"/>
+									</ComboBox>
+								</VBox>
+							</VBox>
+						</VBox>
+
+						<VBox class="contentFilters2">
+							<VBox class="contentFiltersPTWSTC">
+								<VBox class="contentFiltersTC">
+									<core:Icon
+										src="sap-icon://Chart-Tree-Map"
+										class="size1"
+										color="#031E48"
+									/>
+									<Label text="{i18n>mainTypology}"/>
+								</VBox>
+
+								<VBox class="contentFiltersComboBoxT">
+									<ComboBox 
+										id="typology"
+										change="onFilterTab"
+										selectedKey="{mainView>/selectionTypology}"
+										enabled="{mainView>/State/selectionTypology/Enabled}"
+										valueState="{mainView>/State/selectionTypology/ValueState}"
+										valueStateText="{mainView>/State/selectionTypology/ValueStateText}"
+										width="100%"
+										items="{characteristic>/items}"
+									>
+										<core:Item key="{characteristic>Code}" text="{characteristic>Description}"/>
+									</ComboBox>
+								</VBox>
+							</VBox>
+
+							<VBox class="contentFiltersPTWSTC">
+								<VBox class="contentFiltersTC">
+									<core:Icon
+										src="sap-icon://locate-me"
+										class="size1"
+										color="#031E48"
+									/>
+									<Label text="{i18n>mainCity}"/>
+								</VBox>
+
+								<VBox class="contentFiltersComboBoxC">
+									<ComboBox 
+										id="city" 
+										change="onFilterTab"
+										selectedKey="{mainView>/selectionCity}"
+										enabled="{mainView>/State/selectionCity/Enabled}"
+										valueState="{mainView>/State/selectionCity/ValueState}"
+										valueStateText="{mainView>/State/selectionCity/ValueStateText}"
+										width="100%"
+										items="{city>/items}"
+									>		
+										<core:ListItem key="{city>CityName}" text="{city>CityName}{city>RegionCode}"/>
+									</ComboBox>
+								</VBox>
+							</VBox>
+						</VBox>
+					</VBox>
+					<Panel id="panelForGridList">
+						<f:GridList
+							id="gridList"
+							class="sapUiSmallMarginTop"
+							items="{enterprises>/items}"
+						>
+							<f:customLayout>
+								<grid:GridBoxLayout boxMinWidth="23.2rem" boxWidth="23.3rem"/>
+							</f:customLayout>
+
+							<f:GridListItem visible="{enterprises>visible}">
+								<VBox class="sapUiSmallMargin">
+									<layoutData>
+										<FlexItemData growFactor="1" shrinkFactor="0" />
+									</layoutData>
+
+									<Image
+										id="imagesEnterprises"
+										visible="{enterprises>imagesEnterprises}"
+										src="{enterprises>image}"
+										press="onPressImage"
+										width="100%" 
+										height="250px"
+										class="mainImgOdataEnterprises"
+									>
+										<dependents>
+											<Text text="{enterprises>key}"/>
+										</dependents>
+									</Image>
+
+									<VBox 
+										id="imageStandard"
+										visible="{enterprises>imageStandard}"
+										class="sapUiSmallMarginBottom imgMainEnterprises"
+										width="100%"
+										height="250px"
+									/>
+
+									<VBox height="50px" width="100%">
+										<Title class="sapUiSmallMarginBottom" text="{enterprises>title}" wrapping="true"/>
+									</VBox>
+
+									<grid:CSSGrid
+										id="gridContainer"
+										class="MarginLabelInput"
+										gridTemplateRows="repeat(6,1fr)"
+										gridTemplateColumns="1fr"
+										gridGap="0.5rem"
+									>
+										<ObjectStatus
+											text="{enterprises>deliveryDate}"
+											icon="sap-icon://appointment-2"
+										/>
+										<ObjectStatus
+											text="{enterprises>internship}"
+											icon="sap-icon://information"
+										/>
+										<ObjectStatus
+											text="{enterprises>available}"
+											icon="sap-icon://building"
+										/>
+										<ObjectStatus
+											text="{enterprises>blocked}"
+											icon="sap-icon://contacts"
+										/>
+										<ObjectStatus
+											text="{enterprises>cityFormated}"
+											icon="sap-icon://locate-me"
+										/>
+										<ObjectStatus
+											text="{enterprises>price}"
+											icon="sap-icon://lead"
+											visible="false"
+										/>
+									</grid:CSSGrid>
+
+									
+									<grid:CSSGrid
+										id="grid1"
+										class="sapUiSmallMarginTop"
+										gridTemplateRows="1fr"
+										gridTemplateColumns="repeat(3, 1fr)"
+										gridGap="27%"
+									>	
+										<Button 
+											tooltip="{i18n>mainButtonInformation}" 
+											width="3rem" 
+											icon="sap-icon://message-information" 
+											id="information" 
+											type="Default" 
+											press="onNavToInformation"
+											enabled="{enterprises>active}"
+										/>
+										<!--<Button tooltip="{i18n>mainButtonSimulateProposal}" width="3rem" icon="sap-icon://simulate" id="simularProposta" type="Default" press="onSimulateProposal"/>-->
+										<Button 
+											tooltip="{i18n>mainButtonAvailabilityMap}" 
+											width="3rem" 
+											icon="sap-icon://map-2" 
+											id="mapaDisponibilidade" 
+											type="Default" 
+											press="onAvailabilityMap"
+											enabled="{enterprises>active}"
+										/>
+										<Button 
+											tooltip="{i18n>mainButtonPriceList}" 
+											width="3rem" 
+											icon="sap-icon://lead" 
+											id="exibirPrecos" 
+											type="Default" 
+											press="onPriceList"
+											enabled="{enterprises>active}"
+										/>
+									</grid:CSSGrid>
+								</VBox>
+							</f:GridListItem>
+						</f:GridList>
+					</Panel>
+				</content>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

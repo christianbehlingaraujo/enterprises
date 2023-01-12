@@ -1,0 +1,656 @@
+.buttonAll {
+    background-color: #464646;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonAll:hover {
+    background-color: #363636;
+}
+
+.buttonContractInCorrection {
+    background-color: #FA8072;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonContractInCorrection:hover {
+    background-color: #FF7F50;
+}
+
+.buttonAvailable {
+    background-color: #00FF00;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+    
+    transition: background-color 0.2s ;
+}
+
+.buttonAvailable:hover {
+    background-color: #32CD32;
+}
+
+.buttonSignature {
+    background-color: #FF8C00;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonSignature:hover {
+    background-color: #c0700f;
+}
+
+.buttonInProposal {
+    background-color: #FFFF00;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonInProposal:hover {
+    background-color: #c0c013;
+}
+
+.buttonBargainedWithBarter {
+    background-color: #464646;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonBargainedWithBarter:hover {
+    background-color: #363636;
+}
+
+.buttonExchange {
+    background-color: #464646;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonExchange:hover {
+    background-color: #363636;
+}
+
+.buttonReservedForSale {
+    background-color: #3f3ffd;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonReservedForSale:hover {
+    background-color: #0707b6;
+}
+
+.buttonReservedCompany {
+    background-color: #00BFFF;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonReservedCompany:hover {
+    background-color: #1a93bb;
+}
+
+.buttonSold {
+    background-color: #FF0000;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonSold:hover {
+    background-color: #b91d1d;
+}
+
+.buttonUnitDetails {
+    background-color: #1E90FF;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonUnitDetails:hover {
+    background-color: #196dc2;
+}
+
+.buttonTable {
+    background-color: #B8860B;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    border-radius: 0.2rem;
+    border: transparent;
+
+    margin-top: 0.5rem;
+
+    transition: background-color 0.2s ;
+}
+
+.buttonTable:hover {
+    background-color: #886409;
+}
+
+.buttonsOrders {
+    background-color: white;
+    border-color: #dbd9d9;
+}
+
+.buttonsOrdersColor {
+    background-color: #464646;
+    color: white;
+}
+
+.gridContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.MarginLabelInput {
+    margin-top: 0.5rem;
+}
+
+.marginLeftRigthProposalInformation {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.gridPaymentConditionsContainer {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paymentConditionsValidate {
+    background-color: #1caf1c;
+    border-radius: 0.2rem;
+    border: transparent;
+    height: 2rem;
+    width: 100%;
+
+    transition: background-color 0.2s ;
+}
+
+.paymentConditionsValidate:hover {
+    background-color: #11c411;
+}
+
+.paymentConditionsPattern{
+    background-color: #21a3fa;
+    border-radius: 0.2rem;
+    border: transparent;
+    height: 2rem;
+    width: 100%;
+
+    transition: background-color 0.2s ;
+}
+
+.paymentConditionsPattern:hover{
+    background-color: #1c74d8;
+}
+
+.gridPaymentConditionsContent02 {
+    justify-content: flex-end;
+}
+
+.paymentConditionsMenu {
+    height: 4rem;
+}
+
+.proponent {
+    height: 100%;
+    max-height: 332rem;
+}
+
+.proposedCalculationResultToolbar {
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+
+.adjustItemsPurchaseMethod {
+    align-items: center;
+}
+
+.margimEnd {
+    margin: 0 0 0.5rem 0;
+}
+
+.margimLeftStatus {
+    margin-left: 1rem;
+}
+
+.sapMTabContainer .sapMTabContainerContentList {
+    background-color: transparent;
+}
+
+.sapMBarTitleAlignAuto .sapMBarPH {
+    justify-content: center;
+}
+
+/*Filtro do mapa de disponibilidade*/
+.sapMITBTab {
+    width: 8rem;
+}
+
+.sapMITBFilter .sapMITBText {
+    width: 8rem;
+}
+/***********************************/
+
+.buttonShowSpouseAccept {
+    width: 11.5rem;
+    height: 2.2rem;
+    color: white;
+    background-color: #0c770c;
+
+    border: transparent;
+    border-radius: 0.2rem;
+}
+
+.buttonShowSpouseAccept:hover {
+    background-color: #138013;
+}
+
+.buttonHideSpouseReject {
+    width: 11.5rem;
+    height: 2.2rem;
+    color: white;
+    background-color: #770c0c;
+
+    border: transparent;
+    border-radius: 0.2rem;
+}
+
+.buttonHideSpouseReject:hover {
+    background-color: #8b1515;
+}
+
+.availableColor {
+    border-radius: 0.2rem;
+    border: transparent;
+    background-color: #2fd62f;
+    background: #2fd62f;
+}
+
+.tableFragment {
+    height: 100px;
+
+    overflow: auto;
+}
+
+.tableListBlocks {
+    width: 100%;
+    height: auto;
+}
+
+.mainBox {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.tableBlocks {
+    background: transparent;
+    margin-top: 40px;
+    margin-left: -750px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.imgIconPDF {
+    width: 34px; 
+    height: 34px; 
+    margin-top: 8px; 
+    margin-left: 8px; 
+    content: url(../img/icon/BRZ_LOGO.png);
+}
+
+.image {
+    /*content: url("../img/Portal_Caminho_das_Montanhas.jpg");*/
+    width: 100%;
+    height: 1800px;
+
+    margin-left: 20rem;
+    margin-top: 22rem;
+
+    z-index: 0;
+}
+
+.avaliabilityMapAlignItems {
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.menuAvaibilityMap {
+    width: 180px;
+}
+
+.buttonsProposal {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1rem;
+}
+
+.buttonSaveProposal + .buttonSaveProposal {
+    margin-left: 0.5rem;
+}
+
+.imgMainEnterprises {
+    content: url("../img/empreendimento.jpg");
+    width: 100%;
+    height: 250px;
+}
+
+.mainImgOdataEnterprises {
+    margin-bottom: 0.7rem;
+}
+
+.availabilityMapButtonAndIconContainer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* Main View */
+.containerButtonsNUADDRDSF {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contentButtonsNUADDRD {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentButtonsNUA {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentButtonsDDRD {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonsNUA {
+    width: 100%;
+}
+
+.buttonsNUA + .buttonsNUA{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.buttonsDDRD {
+    width: 100%
+}
+
+.buttonsDDRD + .buttonsDDRD{
+    margin-left: 0.5rem;
+}
+
+.contentButtonsSF {
+    width: 100%;
+
+    margin-left: 6rem;
+}
+
+.containerFilters {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+}
+
+.contentFilters1 {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+}
+
+.contentFilters2 {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+}
+
+.contentFiltersPTWSTC {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentFiltersPTWS {
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 1px;
+}
+
+.contentFiltersTC {
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 1px;
+}
+
+.contentFiltersComboBoxPT {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.8rem;
+}
+
+.contentFiltersComboBoxWS {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.8rem;
+}
+
+.contentFiltersComboBoxT {
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.8rem;
+}
+
+.contentFiltersComboBoxC {
+    width: 100%;
+    margin-left: 0.5rem;
+}
+
+.contentPhone {
+    display: flex;
+    flex-direction: row;
+}
+
+@Media(max-width: 1110px){
+    .contentButtonsSF {   
+        margin-left: 2rem;
+    }
+}
+
+@Media(max-width: 820px){
+    .contentButtonsSF {   
+        margin-left: 0;
+    }
+
+    .containerButtonsNUADDRDSF{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/*-----------------------------------------*/
+
+@Media(max-width: 720px){
+    .sapMImg {
+        margin-right: 45px;
+    }
+
+    .containerFilters {
+        flex-direction: column;
+    }
+
+    .contentFiltersComboBoxWS {
+        margin-right: 0;
+    }
+}
+
+@Media(max-width: 620px){
+    .contentButtonsNUADDRD {
+        flex-direction: column;
+    }
+
+    .buttonsNUA + .buttonsNUA{
+        margin-right: 0;
+    }
+
+    .buttonsDDRD {
+        width: 100%
+    }
+
+    .contentFiltersPTWSTC {
+        flex-direction: column;
+
+        align-items: initial;
+        justify-content: flex-start;
+    }
+    
+    .contentFiltersPTWSTC + .contentFiltersPTWSTC {
+        margin-left: 0.5rem;
+    }
+
+    .contentFiltersComboBoxPT {  
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .contentFiltersComboBoxWS {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .contentFiltersComboBoxT {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .contentFiltersComboBoxC {
+        margin-left: 0;
+    }
+}
+
+@media(max-width: 425px){
+    .avaliabilityMapAlignItems {
+        align-items: flex-start;
+        justify-content: center;
+        
+        display: flex;
+        flex-direction: column;
+    }
+}

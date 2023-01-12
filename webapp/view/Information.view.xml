@@ -1,0 +1,79 @@
+<mvc:View
+    controllerName="com.itsgroup.brz.enterprises.controller.Information"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    height="100%"
+>
+    <Page 
+        id="informationPage" 
+        title="{i18n>informationTitle}" 
+        backgroundDesign="Solid" 
+        titleLevel="H1"
+    >
+        <OverflowToolbar design="Solid" height="3rem">
+			<Title text="{enterprises>title}" level="H2" titleStyle="H2" wrapping="true"/>
+			<ToolbarSpacer/>
+		</OverflowToolbar>
+        <OverflowToolbar design="Solid" height="3rem">
+		    <Title text="{i18n>informationLocalization}"/>
+	    </OverflowToolbar>
+        <layout:FixFlex id="informationGraphic" vertical="false" minFlexSize="250">
+            <layout:fixContent>
+                <HBox 
+                    id="map"
+                    fitContainer="true" 
+                    justifyContent="Center"
+                    alignItems="Center"
+                    width="50em"
+                    height="40em"
+                >  
+                </HBox>
+            </layout:fixContent>
+            <layout:flexContent>
+                <viz:Popover id="idPopOver"></viz:Popover>
+                <viz:VizFrame 
+                    id="idVizFrame" 
+                    uiConfig="{applicationSet:'fiori'}" 
+                    vizType="pie"
+                    width="100%"
+                    height="40em"
+                >
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{enterprises>situation}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition 
+                                    name="name"
+                                    value="{name}"
+                                    displayValue="{name} - {theAmount}"
+                                />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition 
+                                    name="theAmount"
+                                    value="{theAmount}" 
+                                />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem 
+                            uid="size" 
+                            type="Measure"
+                            values="theAmount"
+                        />
+                        <viz.feeds:FeedItem 
+                            uid="color" 
+                            type="Dimension"
+                            values="name" 
+                        />
+                    </viz:feeds>
+                </viz:VizFrame>
+            </layout:flexContent>
+        </layout:FixFlex>                        
+    </Page>
+</mvc:View>

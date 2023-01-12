@@ -1,0 +1,336 @@
+<mvc:View
+	controllerName="com.itsgroup.brz.enterprises.controller.PriceList"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+	displayBlock="true"
+	height="100%"
+>
+    <Page 
+        title="{i18n>priceListTitle}"
+        backgroundDesign="Solid"
+        titleLevel="H1"
+    >
+        <content>
+            <IconTabBar
+                id="iconTabBar"
+                select="onQuickFilter"
+                expandable="false"
+                headerBackgroundDesign="Transparent"
+                class="sapUiSmallMarginTop">
+                <items>
+                    <IconTabFilter
+                        key="countAll"
+                        showAll="true"
+                        count="{priceTableProperty>/countAll}"
+                        text="{i18n>priceListAll}"
+                        visible="{=${priceTableProperty>/countAll} === 0 ? false : true}"
+                    />
+                    <IconTabSeparator/>
+                    <IconTabFilter
+                        key="exchange"
+                        icon="sap-icon://collections-insight"
+                        iconColor="Neutral"
+                        count="{priceTableProperty>/exchange}"
+                        text="{i18n>priceListExchange}"
+                        visible="{=${priceTableProperty>/exchange} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="available"
+                        icon="sap-icon://approvals"
+                        iconColor="Positive"
+                        count="{priceTableProperty>/available}"
+                        text="{i18n>priceListAvailable}"
+                        visible="{=${priceTableProperty>/available} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="reserved"
+                        icon="sap-icon://sales-order"
+                        iconColor="Default"
+                        count="{priceTableProperty>/reserved}"
+                        text="{i18n>priceListReserved}"
+                        visible="{=${priceTableProperty>/reserved} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="reservedCompany"
+                        icon="sap-icon://building"
+                        iconColor="Default"
+                        count="{priceTableProperty>/reservedCompany}"
+                        text="{i18n>priceListReservedCompany}"
+                        visible="{=${priceTableProperty>/reservedCompany} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="signature"
+                        icon="sap-icon://write-new-document"
+                        iconColor="Critical"
+                        count="{priceTableProperty>/signature}"
+                        text="{i18n>priceListSignature}"
+                        visible="{=${priceTableProperty>/signature} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="signedContract"
+                        icon="sap-icon://document-text"
+                        iconColor="Negative"
+                        count="{priceTableProperty>/signedContract}"
+                        text="{i18n>priceListSignedContract}"
+                        visible="{=${priceTableProperty>/signedContract} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="inNegociation"
+                        icon="sap-icon://decision"
+                        iconColor="Critical"
+                        count="{priceTableProperty>/inNegociation}"
+                        text="{i18n>priceListInNegociation}"
+                        visible="{=${priceTableProperty>/inNegociation} === 0 ? false : true}"
+                    />
+                    <IconTabFilter
+                        key="sold"
+                        icon="sap-icon://payment-approval"
+                        iconColor="Negative"
+                        count="{priceTableProperty>/sold}"
+                        text="{i18n>PriceListSold}"
+                        visible="{=${priceTableProperty>/sold} === 0 ? false : true}"
+                    />            
+                </items>
+                <content>
+                    <VBox width="100%">
+                        <VBox
+                            id="gridContainer"
+                            class="gridContainer"
+                        >    
+                            <Title text="{priceTable>/nameEnterprise}" titleStyle="H3"/>
+
+                            <VBox>
+                                <RadioButtonGroup
+                                    id="radioButtonGroup"
+                                    columns="2"
+                                    editable="true"
+                                    width="100%"
+                                    select="onSelectedRadioButton"
+                                >
+                                    <RadioButton
+                                        text="{i18n>finishProposalSBPEValue}"
+                                        selected="{priceTable>/radioButtonSBPEValue}"
+                                        visible="{priceTable>/State/radioButtonSBPEValue/Visible}"
+                                        width="100%"
+                                    />
+                                    <RadioButton
+                                        text="{i18n>finishProposalCVAValue}"
+                                        selected="{priceTable>/radioButtonCVAValue}"
+                                        visible="{priceTable>/State/radioButtonCVAValue/Visible}"
+                                        width="100%"
+                                    />
+                                </RadioButtonGroup>
+                            </VBox>
+
+                            <!--<grid:CSSGrid
+                                id="gridButtonContent"
+                                gridTemplateRows="1fr"
+                                gridTemplateColumns="repeat(5, 1fr)"
+                                visible="false"
+                            >
+                                <Button
+                                    id="buttonFloor"
+                                    text="{i18n>simulateProposalFloor}"
+                                    class="buttonsOrders"
+                                    iconFirst="false"
+                                    type="Unstyled"
+                                    width="100%"
+                                    press="onOrderFilter"
+                                />
+                                <Button
+                                    id="buttonColumn"
+                                    text="{i18n>simulateProposalColumn}"
+                                    class="buttonsOrders"
+                                    iconFirst="false"
+                                    width="100%"
+                                    type="Unstyled"
+                                    press="onOrderFilter"
+                                />
+                                <Button
+                                    id="buttonSituation"
+                                    text="{i18n>simulateProposalSituation}"
+                                    class="buttonsOrders"
+                                    iconFirst="false"
+                                    width="100%"
+                                    type="Unstyled"
+                                    press="onOrderFilter"
+                                />
+                                <Button
+                                    id="buttonArea"
+                                    text="{i18n>simulateProposalArea}"
+                                    class="buttonsOrders"
+                                    iconFirst="false"
+                                    width="100%"
+                                    type="Unstyled"
+                                    press="onOrderFilter"
+                                />
+                                <Button
+                                    id="buttonPrice"
+                                    text="{i18n>simulateProposalPrice}"
+                                    class="buttonsOrders"
+                                    iconFirst="false"
+                                    width="100%"
+                                    type="Unstyled"
+                                    press="onOrderFilter"
+                                />
+                            </grid:CSSGrid>-->
+                        </VBox>
+                    </VBox>
+                    <Table
+                        id="priceTable"
+                        width="auto"
+                        noDataText="{i18n>priceListTableNoData}"
+                        busyIndicatorDelay="{priceTableProperty>/tableBusyDelay}"
+                        class="sapUiNoMarginTop"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        updateFinished="onUpdateFinished"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        items="{
+                            path: 'priceTable>/items',
+                            sorter: {
+                                path: 'blockUnit',
+                                descending: false
+                            }
+                        }"
+                    >
+                        <headerToolbar>
+                            <Toolbar width="100%" class="toolbar">
+                                <Title text="{priceTableProperty>/priceListTableTitle}" level="H1" titleStyle="H3"/>
+                                <ToolbarSpacer />
+                                <SearchField
+                                    id="searchField"
+                                    tooltip="{i18n>worklistSearchTooltip}"
+                                    search="onSearch"
+                                    width="auto">
+                                </SearchField>
+                                <Button
+                                    icon="sap-icon://pdf-attachment"
+                                    tooltip="{i18n>priceListButtonPDF}"
+                                    press="onExportPDF"
+                                />
+                                <Button
+                                    icon="sap-icon://excel-attachment"
+                                    tooltip="{i18n>priceListButtonExcel}"
+                                    press="onExportExcel"
+                                />
+                            </Toolbar>
+                        </headerToolbar>
+
+                        <columns>
+                            <Column id="tableUnit" width="8.5em">
+                                <Label text="{i18n>priceListTableUnit}"/>
+                            </Column>
+                            <Column id="tableFeature" width="8.5em">
+                                <Label text="{i18n>priceListTableFeature}"/>
+                            </Column>
+                            <Column id="tableArea" width="5.5em">
+                                <Label text="{i18n>priceListTableArea}"/>
+                            </Column>
+                            <Column id="tablePrice" width="7.5em">
+                                <Label text="{i18n>priceListTablePrice}"/>
+                            </Column>
+                            <Column id="tableVacancies" width="100%">
+                                <Label text="{i18n>priceListTableVacancies}"/>
+                            </Column>
+                            <Column id="tableSignal" width="8.5em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>priceListTableSignal}"/>
+                            </Column>
+                            <Column id="tableReadjustableTable" width="8.5em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>priceListTableReadjustableTable}"/>
+                            </Column>
+                            <Column id="tableFGTS" width="8.5em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>priceListTableFGTS}"/>
+                            </Column>
+                            <Column id="tableFinancing" width="8.5em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>priceListTableFinancing}"/>
+                            </Column>
+
+                            <!--Valor CVA-->
+                            <Column id="tableSignalCVA" width="8.5em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableSignal}"/>
+                            </Column>
+                            <Column id="tableReadjustableTableCVA" width="8.5em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableReadjustableTable}"/>
+                            </Column>
+                            <Column id="tableFGTSCVA" width="8.5em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableFGTS}"/>
+                            </Column>
+                            <Column id="tableFinancingCVA" width="8.5em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableFinancing}"/>
+                            </Column>
+                            <Column id="tableSubsidyCVA" width="8.5em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableSubsidy}"/>
+                            </Column>
+                            
+                            
+                            <!--Valor SBPE-->
+                            <Column id="intermediateSBPEValue" width="10em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>priceListTableIntermediate}"/>
+                            </Column>
+                            <Column id="tableSBPEValue" width="10em" visible="{priceTable>/SBPEVisible}">
+                                <Label text="{i18n>finishProposalSBPEValue}"/>
+                            </Column>
+                            <!--Valor CVA-->
+                            <Column id="intermediateCVAValue" width="10em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>priceListTableIntermediate}"/>
+                            </Column>
+                            <Column id="tableCVAValue" width="10em" visible="{priceTable>/CVAVisible}">
+                                <Label text="{i18n>finishProposalCVAValue}"/>
+                            </Column>
+                             <Column id="tableTableValue" width="11em">
+                                <Label text="{i18n>finishProposalTableValue}"/>
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem
+                                type="Navigation"
+                                press="onPress">
+                                <cells>
+                                    <ObjectStatus
+                                        text="{priceTable>blockUnit}"
+                                        state="{
+                                            path: 'priceTable>status',
+                                            formatter: '.formatter.brzSalesStatus'
+                                        }"
+                                        icon="sap-icon://circle-task-2"
+                                    />
+                                    <Text text="{priceTable>feature}"/>
+                                    <Text text="{priceTable>area}"/>
+                                    <Text text="{priceTable>price}"/>
+                                    <Text text="{priceTable>vacancies}"/>
+                                     <!--Valor SBPE-->
+                                    <Text text="{priceTable>SBPESignal}" visible="{priceTable>/SBPEVisible}"/>
+                                    <Text text="{priceTable>SBPEReadjustableTable}" visible="{priceTable>/SBPEVisible}"/>
+                                    <Text text="{priceTable>SBPEFGTS}" visible="{priceTable>/SBPEVisible}"/>
+                                    <Text text="{priceTable>SBPEFinancing}" visible="{priceTable>/SBPEVisible}"/>
+                                    
+                                    <!--Valor CVA-->
+                                    <Text text="{priceTable>CVASignal}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>CVAReadjustableTable}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>CVAFGTS}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>CVAFinancing}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>CVASubsidy}" visible="{priceTable>/CVAVisible}"/>
+                                    
+                                    <Text text="{priceTable>SBPEIntermediate}" visible="{priceTable>/SBPEVisible}"/>
+                                    <Text text="{priceTable>SBPEValue}" visible="{priceTable>/SBPEVisible}"/>
+                                    <Text text="{priceTable>CVAIntermediate}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>CVAValue}" visible="{priceTable>/CVAVisible}"/>
+                                    <Text text="{priceTable>tableValue}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </IconTabBar> 
+        </content>
+
+        <HBox justifyContent="Center" visible="false">
+			<core:HTML id="html">
+			</core:HTML>
+		</HBox>
+    </Page>
+</mvc:View>

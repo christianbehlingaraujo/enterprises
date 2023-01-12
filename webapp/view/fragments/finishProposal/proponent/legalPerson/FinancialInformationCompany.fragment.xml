@@ -1,0 +1,166 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <Title text="{i18n>proponentFinancialInformationTitle}" titleStyle="H4"/>
+        <grid:CSSGrid
+		    id="gridFinacialInfomationContainerCompany"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr 1fr"
+			gridTemplateColumns="1fr 1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationMonthlyIncome}"/>
+				<Input
+					id="monthlyIncomeCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/monthlyIncome}"
+					enabled="{fragment>/legalPerson/financialInformation/State/monthlyIncome/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/monthlyIncome/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/monthlyIncome/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationIncomeType}"/>
+				<ComboBox
+					id="incomeTypeCompany"
+					selectedKey="{fragment>/legalPerson/financialInformation/incomeType}"
+					enabled="{fragment>/legalPerson/financialInformation/State/incomeType/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/incomeType/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/incomeType/ValueStateText}"
+					items="{incomeType>/items}"
+					width="100%"
+				>
+					<core:Item key="{incomeType>Code}" text="{incomeType>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationCommittedIncome}"/>
+				<Input
+					id="committedIncomeCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/committedIncome}"
+					enabled="{fragment>/legalPerson/financialInformation/State/committedIncome/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/committedIncome/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/committedIncome/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationInformalIncome}"/>
+				<Input
+					id="informalIncomeCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/informalIncome}"
+					enabled="{fragment>/legalPerson/financialInformation/State/informalIncome/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/informalIncome/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/informalIncome/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationCreditFinancing}"/>
+				<Input
+					id="creditFinancingCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/creditFinancing}"
+					enabled="{fragment>/legalPerson/financialInformation/State/creditFinancing/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/creditFinancing/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/creditFinancing/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationSubsidyCredit}"/>
+				<Input
+					id="subsidyCreditCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/subsidyCredit}"
+					enabled="{fragment>/legalPerson/financialInformation/State/subsidyCredit/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/subsidyCredit/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/subsidyCredit/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			
+        </grid:CSSGrid>
+
+		<grid:CSSGrid
+		    id="gridFinacialInfomationContainer2Company"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr 1fr"
+			gridTemplateColumns="1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationFGTSCredit}"/>
+				<Input
+					id="FGTSCreditCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/FGTSCredit}"
+					enabled="{fragment>/legalPerson/financialInformation/State/FGTSCredit/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/FGTSCredit/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/FGTSCredit/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationCreditOwnResources}"/>
+				<Input
+					id="creditOwnResourcesCompany"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/creditOwnResources}"
+					enabled="{fragment>/legalPerson/financialInformation/State/creditOwnResources/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/creditOwnResources/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/creditOwnResources/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationNumberInstallments}"/>
+				<Input
+					id="numberInstallmentsCompany"
+					width="100%"
+					value="{fragment>/legalPerson/financialInformation/numberInstallments}"
+					enabled="{fragment>/legalPerson/financialInformation/State/numberInstallments/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/numberInstallments/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/numberInstallments/ValueStateText}"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentFinancialInformationAmortization}"/>
+				<ComboBox
+					id="amortizationCompany"
+					selectedKey="{fragment>/legalPerson/financialInformation/amortization}"
+					enabled="{fragment>/legalPerson/financialInformation/State/amortization/Enabled}"
+					valueState="{fragment>/legalPerson/financialInformation/State/amortization/ValueState}"
+					valueStateText="{fragment>/legalPerson/financialInformation/State/amortization/ValueStateText}"
+					items="{amortization>/items}"
+					width="100%"
+				>
+					<core:Item key="{amortization>Code}" text="{amortization>Description}"/>
+				</ComboBox>
+			</VBox>
+		</grid:CSSGrid>
+    </VBox>
+</core:FragmentDefinition>

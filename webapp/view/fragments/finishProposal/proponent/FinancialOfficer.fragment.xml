@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+    <VBox id="ContainerFinancialOfficer" height="200px" class="sapUiSmallMarginTop">
+		<Title text="{i18n>proponentFinancialOfficerTitle}" titleStyle="H4"/>
+
+		<TabContainer 
+			id="TabContainerFinancialOfficer"
+			showAddNewButton="true"
+			class="sapUiSmallMarginTop"
+			addNewButtonPress="onAddItemTabFinancialOfficer"
+			itemClose="onCloseItemFinancialOfficer">
+		</TabContainer>
+		<VBox class="tableFragment">
+			<Table
+				id="tableFinancialOfficer"
+				width="auto"
+				class="sapUiNoMarginTop"
+				growing="true"
+				growingScrollToLoad="true"
+				sticky="ColumnHeaders,HeaderToolbar"
+				inset="false"
+				items="{financialOfficer>/items}"
+			>
+				<columns>
+					<Column id="financialOfficerColumnCPF" width="">
+						<Label text="{i18n>proponentLabelCPF}"/>
+					</Column>
+					<Column id="financialOfficerColumnName" width="">
+						<Label text="{i18n>proponentLabelName}"/>
+					</Column>
+					<Column id="financialOfficerColumnCellPhone" width="">
+						<Label text="{i18n>proponentLabelCellPhone}"/>
+					</Column>
+					<Column id="financialOfficerColumnEmail" width="">
+						<Label text="{i18n>proponentLabelEmail}"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPressItemFinancialOfficer"
+					>
+						<cells>
+							<Text
+								text="{financialOfficer>cpf}"
+							/>
+							<Text
+								text="{financialOfficer>name}"
+							/>
+							<Text
+								text="{financialOfficer>mobile}"
+							/>
+							<Text
+								text="{financialOfficer>email}"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <layout:FixFlex id="graphicPaymentPlan" minFlexSize="300">
+            <layout:fixContent>
+            </layout:fixContent>
+            <layout:flexContent>
+                <viz:VizFrame 
+                    id="idVizFrame" 
+                    uiConfig="{applicationSet:'fiori'}"
+                    vizType="donut"
+                    width="100%"
+                    height="100%"
+                >
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{paymentConditions>/items}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition 
+                                    name="selectionComponents"
+                                    value="{selectionComponents}" 
+                                    displayValue="{selectionComponents} - {selectionPercentageFormated}"
+                                />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition 
+                                    name="selectionPercentage"
+                                    value="{selectionPercentage}" 
+                                />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem 
+                            uid="size" 
+                            type="Measure"
+                            values="selectionPercentage"
+                        />
+                        <viz.feeds:FeedItem 
+                            uid="color" 
+                            type="Dimension"
+                            values="selectionComponents" 
+                        />
+                    </viz:feeds>
+                </viz:VizFrame>
+            </layout:flexContent>
+        </layout:FixFlex>
+    </VBox>
+</core:FragmentDefinition>

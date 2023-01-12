@@ -1,0 +1,48 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox id="additionalDataLegalPerson" visible="false">
+		<grid:CSSGrid
+			id="gridContainerLegalPerson01"
+			class="MarginLabelInput"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentLabelMunicipalRegistration}"/>
+				<Input
+					id="municipalRegistration"
+					value="{fragment>/legalPerson/municipalRegistration}"
+					enabled="{fragment>/legalPerson/State/municipalRegistration/Enabled}"
+					valueState="{fragment>/legalPerson/State/municipalRegistration/ValueState}"
+					valueStateText="{fragment>/legalPerson/State/municipalRegistration/ValueStateText}"
+				/>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelStateRegistration}"/>
+				<Input
+					id="stateRegistration"
+					value="{fragment>/legalPerson/stateRegistration}"
+					enabled="{fragment>/legalPerson/State/stateRegistration/Enabled}"
+					valueState="{fragment>/legalPerson/State/stateRegistration/ValueState}"
+					valueStateText="{fragment>/legalPerson/State/stateRegistration/ValueStateText}"
+				/>	
+			</VBox>
+		</grid:CSSGrid> 
+			
+		<!--<VBox class="MarginLabelInput">
+			<Label text="{i18n>proponentLabelNotaryRegistryOffice}"/>
+			<Input
+				id="notaryRegistryOffice"
+				value="{fragment>/legalPerson/notaryRegistryOffice}"
+				enabled="{fragment>/legalPerson/State/notaryRegistryOffice/Enabled}"
+				valueState="{fragment>/legalPerson/State/notaryRegistryOffice/ValueState}"
+				valueStateText="{fragment>/legalPerson/State/notaryRegistryOffice/ValueStateText}"
+			/>	
+		</VBox>-->
+	</VBox>	
+</c:FragmentDefinition>

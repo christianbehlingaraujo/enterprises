@@ -1,0 +1,196 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>	
+	<VBox id="AdditionalDataPhysicalPerson02" class="MarginLabelInput">
+		<grid:CSSGrid
+			id="gridContainerPhysicalPerson01"
+			gridTemplateRows="1fr 1fr 1fr 1fr"
+			gridTemplateColumns="1fr 1fr"
+			gridGap="0.5rem"
+		>
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonIssuer}"/>
+				<ComboBox
+					id="physicalPersonIssuer"
+					selectedKey="{fragment>/physicalPerson/RGIssuer}"
+					enabled="{fragment>/physicalPerson/State/RGIssuer/Enabled}"
+					valueState="{fragment>/physicalPerson/State/RGIssuer/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/RGIssuer/ValueStateText}"
+					change="onValidationPhysicalPerson"
+					width="100%"
+					items="{
+						path: 'issuer>/items',
+						length: '2000'
+					}"
+				>
+					<core:Item key="{issuer>Code}" text="{issuer>Code} - {issuer>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonUF}"/>
+				<ComboBox
+					id="physicalPersonUF"
+					selectedKey="{fragment>/physicalPerson/UF}"
+					enabled="{fragment>/physicalPerson/State/UF/Enabled}"
+					valueState="{fragment>/physicalPerson/State/UF/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/UF/ValueStateText}"
+					change="onValidationPhysicalPerson"
+					width="100%"
+					items="{states>/items}"
+				>
+					<core:Item key="{states>key}" text="{states>key} - {states>text}"/>
+				</ComboBox>	
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonNaturalness}"/>
+				<ComboBox 
+					id="physicalPersonNaturalness"
+					placeholder="{i18n>proponentPhysicalPersonNaturalnessPlaceholder}"
+					selectedKey="{fragment>/physicalPerson/naturalness}"
+					enabled="{fragment>/physicalPerson/State/naturalness/Enabled}"
+					valueState="{fragment>/physicalPerson/State/naturalness/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/naturalness/ValueStateText}"
+					width="100%"	
+					items="{
+						path: 'naturalness>/items',
+						length: '6000',
+						sorter: { path: 'Description' }
+					}"
+				>
+					<core:ListItem key="{naturalness>Code}" text="{naturalness>Code} - {naturalness>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonNationality}"/>
+				<ComboBox
+					id="physicalPersonNationality"
+					placeholder="{i18n>proponentPhysicalPersonNationalityPlaceholder}"
+					selectedKey="{fragment>/physicalPerson/nationality}"
+					enabled="{fragment>/physicalPerson/State/nationality/Enabled}"
+					valueState="{fragment>/physicalPerson/State/nationality/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/nationality/ValueStateText}"
+					width="100%"
+					items="{
+						path: 'nationality>/items',
+						length: '2000'
+					}"
+				>
+					<core:ListItem key="{nationality>Code}" text="{nationality>Code} - {nationality>Description}"/>
+				</ComboBox>
+			</VBox>
+
+            <VBox>
+				<Label text="{i18n>proponentPhysicalPersonMotherName}"/>
+				<Input 
+					id="physicalPersonMontherName"
+					placeholder="{i18n>proponentPhysicalPersonMotherNamePlaceholder}"
+					value="{
+						path: 'fragment>/physicalPerson/motherName',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+					}"
+					enabled="{fragment>/physicalPerson/State/motherName/Enabled}"
+					valueState="{fragment>/physicalPerson/State/motherName/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/motherName/ValueStateText}"
+					change="onValidationPhysicalPerson"
+					width="100%"
+				/>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonFatherName}"/>
+				<Input 
+					id="physicalPersonFatherName"
+					placeholder="{i18n>proponentPhysicalPersonFatherNamePlaceholder}"
+					value="{
+						path: 'fragment>/physicalPerson/fatherName',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+					}"
+					enabled="{fragment>/physicalPerson/State/fatherName/Enabled}"
+					valueState="{fragment>/physicalPerson/State/fatherName/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/fatherName/ValueStateText}"
+					width="100%"
+					change="onValidateField"
+				/>
+			</VBox>
+
+            <VBox>
+				<Label text="{i18n>proponentPhysicalPersonCurrentHousing}"/>
+				<ComboBox
+					id="physicalPersonCurrenthousing"
+					selectedKey="{fragment>/physicalPerson/currentHousing}"
+					enabled="{fragment>/physicalPerson/State/currentHousing/Enabled}"
+					valueState="{fragment>/physicalPerson/State/currentHousing/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/currentHousing/ValueStateText}"
+					width="100%"
+					items="{currentHousing>/items}"
+				>
+					<core:Item key="{currentHousing>Code}" text="{currentHousing>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentPhysicalPersonHousingTime}"/>
+				<Input
+					id="physicalPersonHousingTime"
+					value="{
+						path: 'fragment>/physicalPerson/housingTime',
+						type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+					}"
+					enabled="{fragment>/physicalPerson/State/housingTime/Enabled}"
+					valueState="{fragment>/physicalPerson/State/housingTime/ValueState}"
+					valueStateText="{fragment>/physicalPerson/State/housingTime/ValueStateText}"
+					width="100%"
+					change="onValidateField"
+				/>
+			</VBox>
+		</grid:CSSGrid>
+
+		<VBox>
+			<Label text="{i18n>proponentPhysicalPersonProfession}"/>
+			<ComboBox
+				id="physicalPersonProfession"
+				selectedKey="{fragment>/physicalPerson/profession}"
+				enabled="{fragment>/physicalPerson/State/profession/Enabled}"
+				valueState="{fragment>/physicalPerson/State/profession/ValueState}"
+				valueStateText="{fragment>/physicalPerson/State/profession/ValueStateText}"
+				change="onValidationPhysicalPerson"
+				width="100%"
+				items="{
+					path: 'profession>/items',
+                    length: '2000'
+				}"
+			>
+				<core:ListItem key="{profession>Code}" text="{profession>Description}"/>
+			</ComboBox>
+		</VBox>
+
+		<!--<VBox>
+			<Label text="{i18n>proponentPhysicalPersonRegistryOffice}"/>
+			<Input
+				id="physicalPersonRegistryOffice"
+				value="{fragment>/physicalPerson/notaryRegistryFirm}"
+				enabled="{fragment>/physicalPerson/State/notaryRegistryFirm/Enabled}"
+				valueState="{fragment>/physicalPerson/State/notaryRegistryFirm/ValueState}"
+				valueStateText="{fragment>/physicalPerson/State/notaryRegistryFirm/ValueStateText}"
+				width="100%"
+			/>
+		</VBox>-->
+	</VBox>
+</core:FragmentDefinition>

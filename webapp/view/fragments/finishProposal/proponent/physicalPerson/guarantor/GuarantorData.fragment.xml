@@ -1,0 +1,471 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox>
+        <Title text="{i18n>proponentGuarantorDataHeaderTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+            id="gridGuarantorDataContainer01"
+            class="sapUiSmallMarginTop"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="20% 1fr 1fr"
+            gridGap="0.5rem"
+        >
+            <VBox>
+                <Label text="{i18n>proponentLabelCPF}"/>
+                <Input
+                    id="guarantorCPF"
+                    placeholder="000.000.000-00"
+                    value="{
+                        path: 'fragment>/CPFAndCNPJ',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 11
+                        }
+                    }"
+                    enabled="{fragment>/State/CPFAndCNPJ/Enabled}"
+                    valueState="{fragment>/State/CPFAndCNPJ/ValueState}"
+                    valueStateText="{fragment>/State/CPFAndCNPJ/ValueStateText}"
+                    width="100%"
+                    change="onSearchGuarantor"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentLabelName}"/>
+                <Input
+                    placeholder="{i18n>proponentGuarantorPlaceholderName}"
+                    id="guarantorName"
+                    value="{
+                        path: 'fragment>/name',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 40
+                        }
+                    }"
+                    enabled="{fragment>/State/name/Enabled}"
+                    valueState="{fragment>/State/name/ValueState}"
+                    valueStateText="{fragment>/State/name/ValueStateText}"
+                    width="100%"
+                    change="onValidationFragmentGuarantor"
+                />
+            </VBox> 
+
+            <VBox>
+				<Label text="{i18n>proponentLabelSurname}"/>
+				<Input 
+					id="guarantorSurname"
+					placeholder="{i18n>proponentGuarantorPlaceholderSurname}"
+					value="{
+                        path: 'fragment>/surname',
+                        type : 'sap.ui.model.type.String',
+                        constraints : {
+                            minLength: 1,
+                            maxLength: 40
+                        }
+                    }"
+					enabled="{fragment>/State/surname/Enabled}"
+					valueState="{fragment>/State/surname/ValueState}"
+					valueStateText="{fragment>/State/surname/ValueStateText}"
+					change="onValidationFragmentGuarantor"
+				/>
+			</VBox>   
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+            id="gridGuarantorDataContainer02"
+            class="MarginLabelInput"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="1fr 1fr 1fr"
+            gridGap="0.5rem"
+        >
+            <VBox>
+                <Label text="{i18n>proponentLabelCellPhone}"/>
+	
+                <VBox class="contentPhone">
+                    <VBox width="30%" >
+                        <ComboBox
+                            id="guarantorMobileDDI"
+                            showSecondaryValues ="true"
+                            filterSecondaryValues="true"
+                            selectedKey="{fragment>/mobileDDI}"
+                            enabled="{fragment>/State/mobileDDI/Enabled}"
+                            valueState="{fragment>/State/mobileDDI/ValueState}"
+                            valueStateText="{fragment>/State/mobileDDI/ValueStateText}"
+                            items="{ 
+                                path: 'paisesDDI>/items',
+                                sorter: { path: 'name' },
+                                length: '2000'
+                            }"	
+                        >
+                            <core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+                        </ComboBox>
+                    </VBox>
+
+					<VBox width="100%">
+                        <Input
+                            id="guarantorCellPhone"
+                            placeholder="(00) 00000-0000"
+                            value="{
+                                path: 'fragment>/mobile',
+                                type : 'sap.ui.model.type.String',
+                                constraints : {
+                                    minLength: 1,
+                                    maxLength: 15
+                                }
+                            }"
+                            enabled="{fragment>/State/mobile/Enabled}"
+                            valueState="{fragment>/State/mobile/ValueState}"
+                            valueStateText="{fragment>/State/mobile/ValueStateText}"
+                            width="100%"
+                            change="onValidationFragmentGuarantor"
+                            liveChange="onFormatePhone"
+                        />
+                    </VBox>
+                </VBox>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentLabelEmail}"/>
+                <Input 
+                    placeholder="{i18n>proponentPlaceholderEmail}"
+                    id="guarantorEmail"
+                    value="{
+                        path: 'fragment>/email',
+                        type : '.customEmailType'
+                    }"
+                    enabled="{fragment>/State/email/Enabled}"
+                    valueState="{fragment>/State/email/ValueState}"
+                    valueStateText="{fragment>/State/email/ValueStateText}"
+                    change="onValidationFragmentGuarantor"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentLabelTelePhone}"/>
+
+                <VBox class="contentPhone">
+                    <VBox width="30%" >
+                        <ComboBox
+                            id="guarantorPhoneDDI"
+                            showSecondaryValues ="true"
+                            filterSecondaryValues="true"
+                            selectedKey="{fragment>/phoneDDI}"
+                            enabled="{fragment>/State/phoneDDI/Enabled}"
+                            valueState="{fragment>/State/phoneDDI/ValueState}"
+                            valueStateText="{fragment>/State/phoneDDI/ValueStateText}"
+                            items="{ 
+                                path: 'paisesDDI>/items',
+                                sorter: { path: 'name' },
+                                length: '2000'
+                            }"	
+                        >
+                            <core:ListItem key="{paisesDDI>codePhone}" text="{paisesDDI>codePhone}" additionalText = "{paisesDDI>name}"/>
+                        </ComboBox>
+                    </VBox>
+
+					<VBox width="100%">
+                        <Input
+                            id="guarantorTelePhone"
+                            placeholder="(00) 00000-0000"
+                            value="{
+                                path: 'fragment>/phone',
+                                type : 'sap.ui.model.type.String',
+                                constraints : {
+                                    minLength: 1,
+                                    maxLength: 15
+                                }
+                            }"
+                            enabled="{fragment>/State/phone/Enabled}"
+                            valueState="{fragment>/State/phone/ValueState}"
+                            valueStateText="{fragment>/State/phone/ValueStateText}"
+                            width="100%"
+                            change="onValidationFragmentGuarantor"
+                            liveChange="onFormatePhone"
+                        />
+                    </VBox>
+                </VBox>
+            </VBox>
+        </grid:CSSGrid> 
+
+        <grid:CSSGrid
+            id="gridGuarantorDataContainer03"
+            class="MarginLabelInput"
+            gridTemplateRows="1fr 1fr 1fr 1fr"
+            gridTemplateColumns="1fr 1fr"
+            gridGap="0.5rem"
+        >	
+            <VBox>
+                <Label text="{i18n>proponentLabelSex}"/>
+                <ComboBox
+					id="guarantorSex"
+					selectedKey="{fragment>/sex}"
+                    enabled="{fragment>/State/sex/Enabled}"
+                    valueState="{fragment>/State/sex/ValueState}"
+                    valueStateText="{fragment>/State/sex/ValueStateText}"
+					width="100%"
+					items="{sex>/items}"
+				>
+					<core:Item key="{sex>Code}" text="{sex>Description}" />
+				</ComboBox>	
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentLabelMaritalStatus}"/>
+                <ComboBox
+					id="guarantorMaritalStatus"
+                    selectedKey="{fragment>/maritalStatus}"
+                    enabled="{fragment>/State/maritalStatus/Enabled}"
+                    valueState="{fragment>/State/maritalStatus/ValueState}"
+                    valueStateText="{fragment>/State/maritalStatus/ValueStateText}"
+					width="100%"
+					items="{maritalStatus>/items}"
+                    change="onSelectedMarried"
+				>
+					<core:Item key="{maritalStatus>Code}" text="{maritalStatus>Description}" />
+				</ComboBox>	
+            </VBox>
+
+            <VBox>
+                <grid:CSSGrid
+                    id="gridGuarantorDataContainer04"
+                    gridTemplateRows="1fr"
+                    gridTemplateColumns="1fr 1fr"
+                    gridGap="0.5rem"
+                >
+                    <VBox>
+                        <Label text="{i18n>proponentLabelBirth}"/>
+                        <DatePicker
+                            id="guarantorBirth"
+                            valueFormat="dd/MM/yyyy"
+                            displayFormat="short"
+                            placeholder="dd/mm/aaaa"
+                            value="{fragment>/birth}"
+                            enabled="{fragment>/State/birth/Enabled}"
+                            valueState="{fragment>/State/birth/ValueState}"
+                            valueStateText="{fragment>/State/birth/ValueStateText}"
+                            width="100%"
+                            change="onValidationFragmentGuarantor"
+                        />
+                    </VBox>
+
+                    <VBox>
+                        <Label text="{i18n>proponentLabelRG}"/>
+                        <Input
+                            id="guarantorRG"
+                            value="{
+                                path: 'fragment>/RGNumber',
+                                type : 'sap.ui.model.type.String',
+                                constraints : {
+                                    minLength: 1,
+                                    maxLength: 40
+                                }
+                            }"
+                            enabled="{fragment>/State/RGNumber/Enabled}"
+                            valueState="{fragment>/State/RGNumber/ValueState}"
+                            valueStateText="{fragment>/State/RGNumber/ValueStateText}"
+                        />	
+                    </VBox>
+
+                </grid:CSSGrid> 
+            </VBox>
+
+            <VBox>
+                <grid:CSSGrid
+                    id="gridGuarantorDataContainer05"
+                    gridTemplateRows="1fr"
+                    gridTemplateColumns="1fr 1fr"
+                    gridGap="0.5rem"
+                >
+                    <VBox>
+                        <Label text="{i18n>proponentPhysicalPersonIssuer}"/>
+                        <ComboBox
+                            id="guarantorIssuer"
+                            selectedKey="{fragment>/RGIssuer}"
+                            enabled="{fragment>/State/RGIssuer/Enabled}"
+                            valueState="{fragment>/State/RGIssuer/ValueState}"
+                            valueStateText="{fragment>/State/RGIssuer/ValueStateText}"
+                            width="100%"
+                            items="{
+                                path: 'issuer>/items',
+                                length: '2000'
+                            }"
+                        >
+                            <core:Item key="{issuer>Code}" text="{issuer>Code} - {issuer>Description}"/>
+                        </ComboBox>
+                    </VBox>
+
+                    <VBox>
+                        <Label text="{i18n>proponentPhysicalPersonUF}"/>
+                        <ComboBox
+                            id="guarantorUF"
+                            selectedKey="{fragment>/UF}"
+                            enabled="{fragment>/State/UF/Enabled}"
+                            valueState="{fragment>/State/UF/ValueState}"
+                            valueStateText="{fragment>/State/UF/ValueStateText}"
+                            width="100%"
+                            items="{states>/items}"
+                        >
+                            <core:Item key="{states>key}" text="{states>key} - {states>text}"/>
+                        </ComboBox>
+                    </VBox>
+                </grid:CSSGrid> 
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentPhysicalPersonNaturalness}"/>
+                <ComboBox 
+                    placeholder="{i18n>proponentPhysicalPersonNaturalnessPlaceholder}"
+                    id="guarantorNaturalness"
+                    selectedKey="{fragment>/naturalness}"
+                    enabled="{fragment>/State/naturalness/Enabled}"
+                    valueState="{fragment>/State/naturalness/ValueState}"
+                    valueStateText="{fragment>/State/naturalness/ValueStateText}"
+                    width="100%"
+                    items="{
+						path: 'naturalness>/items',
+						length: '6000',
+                        sorter: { path: 'Description' }
+					}"
+				>
+					<core:ListItem key="{naturalness>Code}" text="{naturalness>Code} - {naturalness>Description}"/>
+				</ComboBox>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentPhysicalPersonNationality}"/>
+                <ComboBox
+					id="guarantorNationality"
+					placeholder="{i18n>proponentPhysicalPersonNationalityPlaceholder}"
+					selectedKey="{fragment>/nationality}"
+					enabled="{fragment>/State/nationality/Enabled}"
+					valueState="{fragment>/State/nationality/ValueState}"
+					valueStateText="{fragment>/State/nationality/ValueStateText}"
+					width="100%"
+					items="{
+						path: 'nationality>/items',
+						length: '2000'
+					}"
+				>
+					<core:ListItem key="{nationality>Code}" text="{nationality>Code} - {nationality>Description}"/>
+				</ComboBox>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentPhysicalPersonMotherName}"/>
+                <Input 
+                    placeholder="{i18n>proponentPhysicalPersonMotherNamePlaceholder}"
+                    id="guarantorMotherName"
+                    value="{
+                        path: 'fragment>/motherName',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+                    }"
+                    enabled="{fragment>/State/motherName/Enabled}"
+                    valueState="{fragment>/State/motherName/ValueState}"
+                    valueStateText="{fragment>/State/motherName/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentPhysicalPersonFatherName}"/>
+                <Input
+                    placeholder="{i18n>proponentPhysicalPersonFatherNamePlaceholder}"
+                    id="guarantorFatherName"
+                    value="{
+                        path: 'fragment>/fatherName',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+                    }"
+                    enabled="{fragment>/State/fatherName/Enabled}"
+                    valueState="{fragment>/State/fatherName/ValueState}"
+                    valueStateText="{fragment>/State/fatherName/ValueStateText}"
+                />
+            </VBox>
+        </grid:CSSGrid> 
+
+        <grid:CSSGrid
+            id="gridGuarantorDataContainer06"
+            class="MarginLabelInput"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="1fr 1fr"
+            gridGap="0.5rem"
+        >
+            <VBox>
+                <Label text="{i18n>proponentFinancialInformationMonthlyIncome}"/>
+                <Input
+					id="guarantorMonthlyIncome"
+					placeholder="R$"
+					width="100%"
+					value="{fragment>/monthlyIncome}"
+                    enabled="{fragment>/State/monthlyIncome/Enabled}"
+                    valueState="{fragment>/State/monthlyIncome/ValueState}"
+                    valueStateText="{fragment>/State/monthlyIncome/ValueStateText}"
+					change="onFormatedAmount"
+				/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentPhysicalPersonProfession}"/>
+                <ComboBox
+					id="guarantorProfession"
+					selectedKey="{fragment>/profession}"
+                    enabled="{fragment>/State/profession/Enabled}"
+                    valueState="{fragment>/State/profession/ValueState}"
+                    valueStateText="{fragment>/State/profession/ValueStateText}"
+                    width="100%"
+					items="{
+                        path: 'profession>/items',
+                        length: '2000'
+                    }"
+				>
+					<core:ListItem key="{profession>Code}" text="{profession>Description}"/>
+				</ComboBox>
+            </VBox>
+
+            <!--<VBox>
+                <Label text="{i18n>proponentLabelNotaryRegistryOffice}"/>
+                <Input 
+                    id="guarantorRegistryOffice"
+                    value="{fragment>/registryOffice}"
+                    enabled="{fragment>/State/registryOffice/Enabled}"
+                    valueState="{fragment>/State/registryOffice/ValueState}"
+                    valueStateText="{fragment>/State/registryOffice/ValueStateText}"
+                />	
+            </VBox>-->
+            
+        </grid:CSSGrid>
+
+        <core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.guarantor.ProfessionalGuarantorData" 
+			type="XML"
+		/>
+
+        <core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.guarantor.HomeAddress" 
+			type="XML"
+		/>
+
+        <VBox id="spousePhysicalPersonGuarantor" visible="false">
+            <core:Fragment 
+                fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.guarantor.spouse.BiddersSpouseData" 
+                type="XML"
+            />
+
+            <core:Fragment 
+                fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.guarantor.spouse.ProfessionalDataBidderSpouse" 
+                type="XML"
+            />
+        </VBox>
+    </VBox>
+</core:FragmentDefinition>

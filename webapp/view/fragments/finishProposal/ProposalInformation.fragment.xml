@@ -1,0 +1,63 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox id="ProposalInformation" class="marginLeftRigthProposalInformation">
+        <Title text="{i18n>proponentProposalInformationTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+		    id="gridProposalInformationContainer01"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+				<Label text="{i18n>proponentLabelMedia}"/>
+				<ComboBox
+					placeholder="{i18n>proponentPlaceholderMedia}"
+					selectedKey="{finishProposal>/proposalInformation/media}"
+					enabled="{finishProposal>/proposalInformation/State/media/Enabled}"
+					valueState="{finishProposal>/proposalInformation/State/media/ValueState}"
+					valueStateText="{finishProposal>/proposalInformation/State/media/ValueStateText}"
+					width="100%"
+					items="{media>/items}"
+				>
+					<core:Item key="{media>Code}" text="{media>Description}"/>
+				</ComboBox>
+			</VBox>
+
+			<VBox>
+				<Label text="{i18n>proponentLabelReasonPurchase}"/>
+				<ComboBox
+					placeholder="{i18n>proponentPlaceholderReasonPurchase}"
+					selectedKey="{finishProposal>/proposalInformation/reasonPurchase}"
+					enabled="{finishProposal>/proposalInformation/State/reasonPurchase/Enabled}"
+					valueState="{finishProposal>/proposalInformation/State/reasonPurchase/ValueState}"
+					valueStateText="{finishProposal>/proposalInformation/State/reasonPurchase/ValueStateText}"
+					width="100%"
+					items="{reasonPurchase>/items}"
+				>
+					<core:Item key="{reasonPurchase>Code}" text="{reasonPurchase>Description}"/>
+				</ComboBox>
+			</VBox>
+        </grid:CSSGrid>
+
+        <VBox class="MarginLabelInput">
+			<Label text="{i18n>proponentLabelComments}"/>
+			<TextArea
+			    growingMaxLines="10"
+				rows="10"
+				cols="40"
+			    width="100%"
+				height="5rem"
+				placeholder="{i18n>proponentProposalInformationPlaceholderTextArea}"
+				value="{finishProposal>/proposalInformation/comments}"
+				enabled="{finishProposal>/proposalInformation/State/comments/Enabled}"
+				valueState="{finishProposal>/proposalInformation/State/comments/ValueState}"
+				valueStateText="{finishProposal>/proposalInformation/State/comments/ValueStateText}"
+		    />	
+		</VBox> 
+    </VBox>
+</core:FragmentDefinition>

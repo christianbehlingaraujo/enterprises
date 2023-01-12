@@ -1,0 +1,230 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <Title text="{i18n>proponentResponsibleProfessionalDataLegalRepresentativeTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+		    id="gridResponsibleProfessionalDataLegalPersonContainer01"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 1fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelCompany}"/>
+                <Input
+					id="LegalRepresentativeLegalPersonCompanyCompanyName"
+					value="{
+                        path: 'fragment>/company/companyName',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 80
+						}
+                    }"
+                    enabled="{fragment>/company/State/companyName/Enabled}"
+                    valueState="{fragment>/company/State/companyName/ValueState}"
+                    valueStateText="{fragment>/company/State/companyName/ValueStateText}"
+					width="100%"
+				/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelOffice}"/>
+                <Input
+					id="LegalRepresentativeLegalPersonCompanyOffice"
+					value="{
+                        path: 'fragment>/company/office',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/office/Enabled}"
+                    valueState="{fragment>/company/State/office/ValueState}"
+                    valueStateText="{fragment>/company/State/office/ValueStateText}"
+					width="100%"
+				/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelAdmissionDate}"/>
+                <DatePicker
+                    id="LegalRepresentativeLegalPersonCompanyAdmissionDate"
+                    valueFormat="dd/MM/yyyy"
+                    displayFormat="short"
+                    placeholder="dd/mm/aaaa"
+                    value="{fragment>/company/admissionDate}"
+                    enabled="{fragment>/company/State/admissionDate/Enabled}"
+                    valueState="{fragment>/company/State/admissionDate/ValueState}"
+                    valueStateText="{fragment>/company/State/admissionDate/ValueStateText}"
+                    width="100%"
+                />
+            </VBox>
+
+            <!--<VBox>
+                <Label text="{i18n>proponentLabelTelePhone}"/>
+                <Input
+					id="LegalRepresentativeLegalPersonCompanyTelePhone"
+					placeholder="+00 (00) 0 0000-0000"
+					value="{fragment>/company/phone}"
+                    enabled="{fragment>/company/State/phone/Enabled}"
+                    valueState="{fragment>/company/State/phone/ValueState}"
+                    valueStateText="{fragment>/company/State/phone/ValueStateText}"
+					width="100%"
+					change="onFormatePhone"
+				/>
+            </VBox>-->
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+		    id="gridResponsibleProfessionalDataLegalPersonContainer02"
+			class="MarginLabelInput"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 5fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentLabelCEP}"/>
+                <Input
+                    id="LegalRepresentativeLegalPersonCompanyCEP"
+					value="{
+                        path: 'fragment>/company/CEP',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 9
+						}
+                    }"
+                    enabled="{fragment>/company/State/CEP/Enabled}"
+                    valueState="{fragment>/company/State/CEP/ValueState}"
+                    valueStateText="{fragment>/company/State/CEP/ValueStateText}"
+					width="100%"
+                    change="onSearchCEP"
+				/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelPublicPlace}"/>
+                <Input 
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderPublicPlace}"
+                    id="LegalRepresentativeLegalPersonCompanyPublicPlace"
+                    value="{
+                        path: 'fragment>/company/publicPlace',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/publicPlace/Enabled}"
+                    valueState="{fragment>/company/State/publicPlace/ValueState}"
+                    valueStateText="{fragment>/company/State/publicPlace/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNumber}"/>
+                <Input 
+                    type="Number" 
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderNumber}"
+                    id="LegalRepresentativeLegalPersonCompanyNumber"
+                    value="{
+                        path: 'fragment>/company/number',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/number/Enabled}"
+                    valueState="{fragment>/company/State/number/ValueState}"
+                    valueStateText="{fragment>/company/State/number/ValueStateText}"
+                />
+            </VBox>
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+		    id="gridResponsibleProfessionalDataLegalPersonContainer03"
+			class="MarginLabelInput"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="2fr 2fr 2fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelComplement}"/>
+                <Input 
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderComplement}"
+                    id="LegalRepresentativeLegalPersonCompanyComplement"
+                    value="{
+                        path: 'fragment>/company/complement',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/complement/Enabled}"
+                    valueState="{fragment>/company/State/complement/ValueState}"
+                    valueStateText="{fragment>/company/State/complement/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNeighborhood}"/>
+                <Input
+                    id="LegalRepresentativeLegalPersonCompanyNeighborhood"
+                    value="{
+                        path: 'fragment>/company/neighborhood',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/neighborhood/Enabled}"
+                    valueState="{fragment>/company/State/neighborhood/ValueState}"
+                    valueStateText="{fragment>/company/State/neighborhood/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelCounty}"/>
+                <Input 
+                    placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderCounty}"
+                    id="LegalRepresentativeLegalPersonCompanyCounty"
+                    value="{
+                        path: 'fragment>/company/county',
+                        type : 'sap.ui.model.type.String',
+						constraints : {
+							minLength: 1,
+							maxLength: 40
+						}
+                    }"
+                    enabled="{fragment>/company/State/county/Enabled}"
+                    valueState="{fragment>/company/State/county/ValueState}"
+                    valueStateText="{fragment>/company/State/county/ValueStateText}"
+                />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelUF}"/>
+                <ComboBox
+                    id="LegalRepresentativeLegalPersonCompanyHomeAddressUF"
+					selectedKey="{fragment>/company/UF}"
+                    enabled="{fragment>/company/State/UF/Enabled}"
+                    valueState="{fragment>/company/State/UF/ValueState}"
+                    valueStateText="{fragment>/company/State/UF/ValueStateText}"
+					width="100%"
+					items="{states>/items}"
+				>
+					<core:Item key="{states>key}" text="{states>key} - {states>text}"/>
+				</ComboBox>
+            </VBox>
+        </grid:CSSGrid>
+    </VBox>
+</core:FragmentDefinition>

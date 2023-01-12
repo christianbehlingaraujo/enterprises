@@ -1,0 +1,46 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <VBox class="sapUiSmallMarginTop" visible="{finishProposal>/viewTable/selectionViewProposedAnalysis}">
+        <Title text="{i18n>resultProposedAnalysisTitle}" titleStyle="H4"/>
+
+        <table:Table 
+            rows="{resultProposed>/items}" 
+            visibleRowCount="{resultProposed>/rowCount}" 
+            selectionMode="None" 
+            width="100%" 
+            class="sapUiSmallMarginTop"
+        >
+            <table:columns>
+                <table:Column width="100%" hAlign="Begin">
+                    <Label text="{i18n>resultProposedAnalysisCriterion}"/>
+                    <table:template>
+                        <VBox alignItems="Start">
+                            <Text text="{resultProposed>criterion}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="20%" hAlign="End">
+                    <Label text="{i18n>resultProposedAnalysisTable}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{resultProposed>table}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="20%" hAlign="End">
+                    <Label text="{i18n>resultProposedAnalysisProposal}"/>
+                    <table:template>
+                        <VBox alignItems="End">
+                            <Text text="{resultProposed>proposal}"/>
+                        </VBox>
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+    </VBox>
+</c:FragmentDefinition>

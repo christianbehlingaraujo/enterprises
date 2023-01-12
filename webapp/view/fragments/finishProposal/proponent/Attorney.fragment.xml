@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+    <VBox id="ContainerAttorney" height="200px" class="sapUiSmallMarginTop">
+		<Title text="{i18n>proponentAttorneyTitle}" titleStyle="H4"/>
+
+		<TabContainer 
+			id="tabContainerAttorney"
+			showAddNewButton="true"
+			class="sapUiSmallMarginTop"
+			addNewButtonPress="onAddItemTabAttorney">
+		</TabContainer>
+		<VBox class="tableFragment">
+			<Table
+				id="tableAttorney"
+				width="auto"
+				growing="true"
+				growingScrollToLoad="true"
+				sticky="ColumnHeaders,HeaderToolbar"
+				items="{attorney>/items}"
+			>
+				<columns>
+					<Column id="attorneyColumnCPF" width="">
+						<Label text="{i18n>proponentLabelCPF}"/>
+					</Column>
+					<Column id="attorneyColumnName" width="">
+						<Label text="{i18n>proponentLabelName}"/>
+					</Column>
+					<Column id="attorneyColumnCellPhone" width="">
+						<Label text="{i18n>proponentLabelCellPhone}"/>
+					</Column>
+					<Column id="attorneyColumnEmail" width="">
+						<Label text="{i18n>proponentLabelEmail}"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPressItemAttorney"
+					>
+						<cells>
+							<Text
+								text="{attorney>cpf}"
+							/>
+							<Text
+								text="{attorney>name}"
+							/>
+							<Text
+								text="{attorney>mobile}"
+							/>
+							<Text
+								text="{attorney>email}"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+    </VBox>
+</core:FragmentDefinition>

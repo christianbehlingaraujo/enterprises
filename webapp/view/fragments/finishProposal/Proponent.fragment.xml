@@ -1,0 +1,121 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+	<VBox id="ContainerProponent" class="sapUiSmallMargin">
+		<Table
+            id="involvedPartiesTable"
+            width="auto"
+            noDataText="{i18n>priceListTableNoData}"
+            growing="true"
+            growingScrollToLoad="true"
+            updateFinished="onUpdateFinishedProponents"
+            items="{involvedParties>/items}"
+        >
+            <headerToolbar>
+                <Toolbar width="100%">
+                    <Title text="{texts>/involvedPartiesTableTitle}" level="H1" titleStyle="H3"/>
+                    
+                    <ToolbarSpacer />
+
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentItemName}"
+                        type="Emphasized"
+                        press="onAddItemProponent"
+                    />
+                    <!--......................................................................................-->
+                    <!--........................ Pessoa Física ...............................................-->
+                    <!--......................................................................................-->
+                    <Title 
+                        text="{i18n>proponentPhysicalPerson}: " 
+                        titleStyle="H4" 
+                        visible="{involvedParties>/buttonsPhysicalPerson}"
+                    />
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentAttorneyTitle}"
+                        type="Emphasized"
+                        press="onAddItemAttorney"
+                        visible="{involvedParties>/buttonsPhysicalPerson}"
+                    />
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentFinancialOfficerTitle}"
+                        type="Emphasized"
+                        press="onAddItemFinancialOfficer"
+                        visible="{involvedParties>/buttonsPhysicalPerson}"
+                    />
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentGuarantorTitle}"
+                        type="Emphasized"
+                        press="onAddItemGuarantor"
+                        visible="{involvedParties>/buttonsPhysicalPerson}"
+                    />
+                    <!--......................................................................................-->
+                    <!--........................ Pessoa Jurídica .............................................-->
+                    <!--......................................................................................-->
+                    <Title 
+                        text="{i18n>proponentLegalPerson}: " 
+                        titleStyle="H4" 
+                        visible="{involvedParties>/buttonsLegalPerson}"
+                    />
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentLegalRepresentativeTitle}"
+                        type="Emphasized"
+                        press="onAddItemLegalRepresentative"
+                        visible="{involvedParties>/buttonsLegalPerson}"
+                    />
+                    <!--<Button
+                        icon="sap-icon://add"
+                        text="{i18n>proponentGuarantorTitle}"
+                        type="Default"
+                        press="onAddItemLegalPersonGuarantor"
+                        visible="{involvedParties>/buttonsLegalPerson}"
+                    />-->
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+				<Column id="attorneyColumnFunction" width="12%">
+					<Label text="{i18n>proponentLabelFunction}"/>
+				</Column>
+              	<Column id="attorneyColumnCPFAndCNPJ" width="12%">
+					<Label text="{i18n>proponentLabelCPFAndCNPJ}"/>
+				</Column>
+				<Column id="attorneyColumnName" width="">
+					<Label text="{i18n>proponentLabelName}"/>
+				</Column>
+                <Column id="attorneyColumnSpouseCPF" width="12%">
+					<Label text="{i18n>proponentLabelSpouseCPF}"/>
+				</Column>
+				<Column id="attorneyColumnSpouseName" width="">
+					<Label text="{i18n>proponentLabelSpouseName}"/>
+				</Column>
+				<Column id="attorneyColumnCellPhone" width="">
+					<Label text="{i18n>proponentLabelCellPhone}"/>
+				</Column>
+				<Column id="attorneyColumnEmail" width="">
+					<Label text="{i18n>proponentLabelEmail}"/>
+				</Column>  
+            </columns>
+            <items>
+                <ColumnListItem
+                    type="Navigation"
+                    press="onPressItemInvolvedParties"
+				>
+                    <cells>
+                        <Text text="{involvedParties>functionCodeText}"/>
+                        <Text text="{involvedParties>CPFAndCNPJ}"/>
+						<Text text="{involvedParties>name} {involvedParties>surname}"/>
+                        <Text text="{involvedParties>biddersSpouseData/cpf}"/>
+						<Text text="{involvedParties>biddersSpouseData/name}"/>
+						<Text text="{involvedParties>mobile}"/>
+						<Text text="{involvedParties>email}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+	</VBox>
+</core:FragmentDefinition>

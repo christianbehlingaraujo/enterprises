@@ -1,0 +1,193 @@
+<mvc:View
+	controllerName="com.itsgroup.brz.enterprises.controller.ObjectPriceList"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+>
+	<semantic:SemanticPage
+		id="objectPriceTable"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+        busyIndicatorDelay="{objectView>/delay}"
+    >
+		<semantic:titleHeading>
+			<Title text="{priceTable>nameEnterprise}" />
+		</semantic:titleHeading>
+
+        <semantic:headerContent>
+			<FlexBox
+				alignItems="Start"
+                justifyContent="SpaceBetween"
+				width="100%"
+			>
+				<Panel backgroundDesign="Transparent">
+					<f:SimpleForm 
+						id="Simple"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						width="100%"
+					>
+						<f:content>
+							<Label text="{i18n>finishProposalBlock}"/>
+							<Text text="{priceTable>block}"/>
+
+							<Label text="{i18n>finishProposalUnit}"/>
+							<Text text="{priceTable>unit}"/>
+
+							<Label text="{i18n>finishProposalTableValue}"/>
+							<Text text="{priceTable>tableValue}"/>
+						</f:content>
+					</f:SimpleForm>
+				</Panel>
+
+				<Panel backgroundDesign="Transparent">
+					<f:SimpleForm 
+						id="SimpleStatus"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						width="100%"
+					>
+						<f:content>
+							<grid:CSSGrid
+								id="gridContainer"
+								gridTemplateRows="repeat(4,1fr)"
+								gridTemplateColumns="1fr"
+								gridGap="0.5rem"
+								width="500px"
+							>
+							<ObjectStatus
+								title="{i18n>objectPriceListStatusTitle}"
+								text="{priceTable>statusText}"
+								state="{
+                                    path: 'priceTable>status',
+                                    formatter: '.formatter.brzSalesStatus'
+                                }"
+                                icon="sap-icon://circle-task-2"
+							/>
+							<Button 
+								text="{i18n>objectPriceListSimulateProposal}" 
+								icon="sap-icon://key"
+								press="onNavFinishProposal"
+								visible="{priceTable>/simulate}"
+							/>
+							<Button 
+								text="{i18n>objectPriceListReserve}" 
+								icon="sap-icon://add-activity-2"
+								visible="{priceTable>reserved}"
+								press="onReservedUnit"
+								type="Default"
+							/>
+							<Button 
+								text="{i18n>objectPriceListRemoveReserve}" 
+								icon="sap-icon://activity-2"
+								visible="false"
+							/>
+							</grid:CSSGrid>
+						</f:content>
+					</f:SimpleForm>
+				</Panel>
+			</FlexBox>
+		</semantic:headerContent>
+
+		<semantic:content>
+			<VBox>
+				<Panel 
+					headerText="{i18n>ObjectPriceListUnitDetails}"
+					backgroundDesign="Transparent"
+				>
+					<f:SimpleForm 
+						id="SimpleFormDetailsUnit"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanXL="4"
+						labelSpanL="3"
+						labelSpanM="4"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="4"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="3"
+						columnsL="3"
+						columnsM="2"
+						singleContainerFullSize="false"
+					>
+						<f:content>
+							<core:Title text="{i18n>objectPriceListUnitTitle}"/>
+							<Label text="{i18n>finishProposalUnit}"/>
+							<Text text="{priceTable>unit}"/>
+							<Label text="{i18n>priceListTableArea}"/>
+							<Text text="{priceTable>area}"/>
+							<Label text="{i18n>priceListTablePrice}"/>
+							<Text text="{priceTable>price}"/>
+							<Label text="{i18n>priceListTableVacancies}"/>
+							<Text text="{priceTable>vacancies}"/>
+							<Label text="{i18n>finishProposalSBPEValue}"/>
+							<Text text="{priceTable>SBPEValue}"/>
+							<Label text="{i18n>finishProposalCVAValue}"/>
+							<Text text="{priceTable>CVAValue}"/>
+							<Label text="{i18n>finishProposalTableValue}"/>
+							<Text text="{priceTable>tableValue}"/>
+
+							<core:Title text="{i18n>objectPriceListSuggestedPricesSBPETitle}"/>
+							<Label text="{i18n>priceListTableSignal}"/>
+							<Text text="{priceTable>SBPESignal}"/>
+							<Label text="{i18n>priceListTableReadjustableTable}"/>
+							<Text text="{priceTable>SBPEReadjustableTable}"/>
+							<Label text="{i18n>priceListTableFGTS}"/>
+							<Text text="{priceTable>SBPEFGTS}"/>
+							<Label text="{i18n>priceListTableFinancing}"/>
+							<Text text="{priceTable>SBPEFinancing}"/>
+							<Label text="{i18n>priceListTableIntermediate}"/>
+							<Text text="{priceTable>SBPEIntermediate}"/>
+
+							<core:Title text="{i18n>objectPriceListSuggestedPricesCVATitle}"/>
+							<Label text="{i18n>priceListTableSignal}"/>
+							<Text text="{priceTable>CVASignal}"/>
+							<Label text="{i18n>priceListTableReadjustableTable}"/>
+							<Text text="{priceTable>CVAReadjustableTable}"/>
+							<Label text="{i18n>priceListTableFGTS}"/>
+							<Text text="{priceTable>CVAFGTS}"/>
+							<Label text="{i18n>priceListTableFinancing}"/>
+							<Text text="{priceTable>CVAFinancing}"/>
+							<Label text="{i18n>priceListTableSubsidy}"/>
+							<Text text="{priceTable>CVASubsidy}"/>
+							<Label text="{i18n>priceListTableIntermediate}"/>
+							<Text text="{priceTable>CVAIntermediate}"/>
+						</f:content>
+					</f:SimpleForm>
+				</Panel>
+
+				<Panel 
+					headerText="{i18n>ObjectPriceListUnitImages}"
+					backgroundDesign="Transparent"
+				>
+					<VBox alignItems="Center">
+						<Carousel
+							height="600px"
+							width="1000px"
+							pages="{priceTable>images}"
+							loop="true"
+						>
+							<pages>
+								<Image
+									alt="{priceTable>name}"
+									height="100%"
+									src="{priceTable>src}"
+									width="100%"
+								/>
+							</pages>
+						</Carousel>
+					</VBox>
+				</Panel>
+			</VBox>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

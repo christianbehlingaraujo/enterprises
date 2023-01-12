@@ -1,0 +1,97 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <table:Table 
+		rows="{enterprises>/items}" 
+		visibleRowCount="1" 
+		selectionMode="None" 
+		width="100%" 
+		class="sapUiSmallMarginTop"
+	>
+		<table:noData><Text text="{i18n>myReservationsTableNoItems}"/></table:noData>
+		<table:columns>
+			<!--Companies-->
+			<table:Column width="20%" hAlign="Center">
+				<Label text="{i18n>finishProposalEnterprises}" tooltip="{i18n>finishProposalEnterprises}"/>
+				<table:template>
+					<Text text="{enterprises>nameEnterprise}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="12%" hAlign="Center">
+				<Label text="{i18n>finishProposalBlock}" tooltip="{i18n>finishProposalBlock}"/>
+				<table:template>
+					<Text text="{enterprises>block}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="14%" hAlign="Center">
+				<Label text="{i18n>finishProposalUnit}" tooltip="{i18n>finishProposalUnit}"/>
+				<table:template>
+					<VBox>
+						<Text text="{enterprises>unit}"/>
+						<Button
+							tooltip="{i18n>finishProposalChangeUnit}"
+							icon="sap-icon://share"
+							press="onPressChangeUnit"
+						/>
+					</VBox>
+				</table:template>
+			</table:Column>
+			<table:Column width="14%" hAlign="Center">
+				<Label text="{i18n>finishProposalEstimatedDelivery}" tooltip="{i18n>finishProposalEstimatedDelivery}"/>
+				<table:template>
+                    <Text text="{enterprises>estimatedDeliveryDate}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="14%" hAlign="Center">
+				<Label text="{i18n>finishProposalDelivery}" tooltip="{i18n>finishProposalDelivery}"/>
+				<table:template>
+                    <Text text="{enterprises>deliveryDateMonth}"/>
+				</table:template>
+			</table:Column>
+            <table:Column width="14%" hAlign="Center">
+				<Label text="{i18n>finishProposalArea}" tooltip="{i18n>finishProposalArea}"/>
+				<table:template>
+                    <Text text="{enterprises>area}"/>
+				</table:template>
+			</table:Column>
+            <table:Column width="100%" hAlign="Center">
+				<Label text="{i18n>finishProposalVacancies}" tooltip="{i18n>finishProposalVacancies}"/>
+				<table:template>
+                    <Text text="{enterprises>vacancies}"/>
+				</table:template>
+			</table:Column>
+            <table:Column width="20%" hAlign="Center">
+				<Label text="{i18n>finishProposalDate}" tooltip="{i18n>finishProposalDate}" width="100%"/>
+				<table:template>
+                    <Text text="{enterprises>proposalDate}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="24%" hAlign="Center" visible="{enterprises>/SBPEVisible}">
+				<Label text="{i18n>finishProposalSBPEValue}" tooltip="{i18n>finishProposalSBPEValue}"/>
+				<table:template>
+                    <Text text="{enterprises>SBPEValue}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="24%" hAlign="Center" visible="{enterprises>/CVAVisible}">
+				<Label text="{i18n>finishProposalCVAValue}" tooltip="{i18n>finishProposalCVAValue}"/>
+				<table:template>
+                    <Text text="{enterprises>CVAValue}"/>
+				</table:template>
+			</table:Column>
+            <table:Column width="28%" hAlign="Center" visible="{enterprises>/tableVisible}">
+				<Label text="{i18n>finishProposalTableValue}" tooltip="{i18n>finishProposalTableValue}"/>
+				<table:template>
+                    <Text text="{enterprises>tableValue}"/>
+				</table:template>
+			</table:Column>
+			<table:Column width="28%" hAlign="Center" visible="{enterprises>/tetoVisible}">
+				<Label text="{i18n>finishProposalTetoValue}" tooltip="{i18n>finishProposalTetoValue}"/>
+				<table:template>
+                    <Text text="{enterprises>tableValueTetoCVA}"/>
+				</table:template>
+			</table:Column>
+		</table:columns>
+	</table:Table>
+</core:FragmentDefinition>

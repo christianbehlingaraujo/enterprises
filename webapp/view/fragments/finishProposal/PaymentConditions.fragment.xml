@@ -1,0 +1,479 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	
+>
+    <VBox id="paymentConditions" class="sapUiSmallMarginTop marginLeftRigthProposalInformation">
+        <Title text="{i18n>paymentConditionsTitle}" titleStyle="H4"/>
+		
+		<grid:CSSGrid
+            id="gridContainerContent"
+			class="sapUiSmallMarginTop adjustItemsPurchaseMethod"
+            gridTemplateRows="1fr"
+			gridTemplateColumns="10% 1fr 4fr"
+			gridGap="0.2rem"
+        >
+			<Label text="{i18n>paymentConditionsSaleForm}:"/>
+			<ComboBox
+				id="saleForm"
+				width="100%"
+				visible="{paymentConditions>/State/selectionSaleForm/Visible}"
+				enabled="{paymentConditions>/State/selectionSaleForm/Enabled}"
+				selectedKey="{paymentConditions>/selectionSaleForm}"
+				items="{saleForm>/items}"
+				change="onSaleForm"
+			>
+				<core:Item key="{saleForm>Code}" text="{saleForm>Description}"/>
+			</ComboBox>
+
+			<VBox>
+			</VBox>
+		</grid:CSSGrid>
+
+		<grid:CSSGrid
+			id="gridContainerConten1"
+			class="adjustItemsPurchaseMethod"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="10% 1fr 4fr"
+			gridGap="0.2rem"
+			visible="{paymentConditions>/State/selectionPurchaseMethod/Visible}"
+		>	
+			<Label text="{i18n>paymentConditionsPurchaseMethod}:" />
+			<ComboBox
+				id="purchaseMethod"
+				width="100%"
+				visible="{paymentConditions>/State/selectionPurchaseMethod/Visible}"
+				enabled="{paymentConditions>/State/selectionPurchaseMethod/Enabled}"
+				selectedKey="{paymentConditions>/selectionPurchaseMethod}"
+				items="{purchaseMethod>/items}"
+				change="onPurchaseMethod"
+			>
+				<core:Item key="{purchaseMethod>Code}" text="{purchaseMethod>Description}"/>
+			</ComboBox>
+
+			<VBox>
+			</VBox>
+		</grid:CSSGrid>
+
+		<grid:CSSGrid
+            id="gridContainerContent2"
+			class="adjustItemsPurchaseMethod"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="10% 1fr 4fr"
+			gridGap="0.2rem"
+			visible="{paymentConditions>/State/selectionPaymentPlan/Visible}"
+        >
+			<Label text="{i18n>paymentConditionsLabelPaymentPlan}:"/>
+			<ComboBox
+				id="paymentPlan"
+				width="100%"
+				visible="{paymentConditions>/State/selectionPaymentPlan/Visible}"
+				enabled="{paymentConditions>/State/selectionPaymentPlan/Enabled}"
+				selectedKey="{paymentConditions>/selectionPaymentPlan}"
+				items="{paymentConditions>/itemsPaymentPlanInit}"
+				change="onPressPaymentPlan"
+			>
+				<core:Item key="{paymentConditions>key}"  text="{paymentConditions>text}"/>
+			</ComboBox>
+
+			<VBox>
+			</VBox>
+		</grid:CSSGrid>
+
+		<grid:CSSGrid
+            id="gridContainerContent3"
+			class="adjustItemsPurchaseMethod"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="10% 1fr 4fr"
+			gridGap="0.2rem"
+			visible="{paymentConditions>/State/selectionValueIntermediate/Visible}"
+        >
+			<Label text="{i18n>paymentConditionsValueIntermediate}"/>
+			<Input 
+				id="valueIntermediate"
+				placeholder="R$ 0,00"
+				value="{paymentConditions>/selectionValueIntermediate}"
+				valueState="{paymentConditions>/State/selectionValueIntermediate/ValueState}"
+				valueStateText="{paymentConditions>/State/selectionValueIntermediate/ValueStateText}"
+				enabled="{paymentConditions>/State/selectionValueIntermediate/Enabled}"
+				change="onCalculationIntermediate"
+			/>
+
+			<VBox>
+			</VBox>
+		</grid:CSSGrid>
+
+		<grid:CSSGrid
+            id="gridContainerContent4"
+			class="adjustItemsPurchaseMethod"
+            gridTemplateRows="1fr"
+            gridTemplateColumns="10% 1fr 4fr"
+			gridGap="0.2rem"
+        >
+			<Label text="{i18n>paymentConditionsComponents}:"/>
+			<ComboBox
+				id="components"
+				width="100%"
+				visible="{paymentConditions>/State/selectionComponents/Visible}"
+				enabled="{paymentConditions>/State/selectionComponents/Enabled}"
+				selectedKey="{paymentConditions>/selectionComponents}"
+				items="{componentsValues>/items}"
+			>
+				<core:Item key="{componentsValues>key}" text="{componentsValues>text}"/>
+			</ComboBox>	
+
+			<VBox width="5%">
+				<Button
+					id="buttonAddRow"
+					icon="sap-icon://add" 
+					visible="{paymentConditions>/State/buttonAdd/Visible}"
+					press="onAddRowInTable"
+					tooltip="{i18n>paymentConditionsButtonAddition}"
+					width="100%"
+				>
+					<dependents>
+						<Text text="{paymentConditions>/selectionComponents}"/>
+					</dependents>
+				</Button>
+			</VBox>
+		</grid:CSSGrid>
+
+        <Table
+            id="paymentConditionsTable"
+            width="auto"
+            noDataText="{i18n>priceListTableNoData}"
+            class="MarginLabelInput"
+            growing="true"
+            growingScrollToLoad="true"
+            items="{paymentConditions>/items}"
+        >
+            <columns>
+				<Column id="tableButtonRemove"  width="10%">
+                    <Label />
+                </Column>
+            	<Column id="tableComponents" width="30%">
+                    <Label text="{i18n>paymentConditionsComponents}" />
+                </Column>
+                <Column id="tableTheAmount" width="16%" hAlign="Center">
+                    <Label text="{i18n>paymentConditionsTheAmount}"/>
+                </Column>
+                <Column id="tableDueDate" width="20%" hAlign="Center">
+                	<Label text="{i18n>paymentConditionsDueDate}"/>
+                </Column>
+                <Column id="tableUnitaryValue" width="25%" hAlign="End">
+                    <Label text="{i18n>paymentConditionsUnitaryValue}"/>
+                </Column>
+                <Column id="tableDeductCommission" width="12%" hAlign="End">
+                    <Label text="{i18n>paymentConditionsDeductCommission}"/>
+                </Column>
+                <Column id="tablePercentage" width="20%" hAlign="End">
+                    <Label text="{i18n>paymentConditionsPercentage}"/>
+                </Column>
+                <Column id="tableAmount" width="20%" hAlign="End">
+                    <Label text="{i18n>paymentConditionsAmount}"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+						<Button
+							id="buttonRemoveRow"
+							icon="sap-icon://less" 
+							visible="{paymentConditions>State/buttonRemove/Visible}"
+							press="onRemoveRowInTable"
+							width="100%"
+							tooltip="{i18n>paymentConditionsButtonRemove}"
+							type="Reject"
+						>
+							<dependents>
+								<Text text="{paymentConditions>key}"/> 
+							</dependents>
+						</Button>
+						
+
+						<Text text="{paymentConditions>selectionComponents}" width="100%"/>
+                        
+						<Input 
+							id="theAmount"
+							textAlign="Center" 
+							type="Number"
+							width="100%" 
+							value="{paymentConditions>selectionTheAmount}"
+							visible="{paymentConditions>State/selectionTheAmount/Visible}" 
+							enabled="{paymentConditions>State/selectionTheAmount/Enabled}"
+							change="onCalculationProposed"
+						>
+							<dependents>
+								<Label id="ComponentInput" text="{paymentConditions>selectionComponents}"/>
+							</dependents>
+						</Input>
+
+						<DatePicker
+							id="DueDate"
+							valueFormat="dd/MM/yyyy"
+							displayFormat="short"
+							value="{paymentConditions>selectionDueDate}"
+							visible="{paymentConditions>State/selectionDueDate/Visible}"
+							enabled="{paymentConditions>State/selectionDueDate/Enabled}"
+							change="onCalculationProposed"
+							width="100%"
+						>
+						</DatePicker>
+
+						<grid:CSSGrid
+                            id="gridButtonInput"
+                            gridTemplateRows="1fr"
+                            gridTemplateColumns="13% 1fr"
+							gridGap="0.5rem"
+                        >	
+							<VBox>
+								<Button
+									id="calculationDifference"
+									icon="sap-icon://collections-management"
+									tooltip="{i18n>paymentConditionsCalculationDifference}"
+									press="onCalculationDifference"
+									visible="{paymentConditions>State/selectionDifference/Visible}"
+								>
+									<dependents>
+										<Text text="{paymentConditions>key}"/>
+									</dependents>
+								</Button>
+							</VBox>
+							<Input
+								id="unitaryValue"
+								placeholder="R$"
+								width="100%"
+								value="{paymentConditions>selectionUnitaryValue}"
+								visible="{paymentConditions>State/selectionUnitaryValue/Visible}"
+								enabled="{paymentConditions>State/selectionUnitaryValue/Enabled}"
+								change="onFormatedValue"
+								textAlign="End"
+							/>
+						</grid:CSSGrid>
+
+						<Text 
+							id="DeductCommission" 
+							text="{paymentConditions>selectionDeductCommission}"
+							textAlign="End"
+							width="100%"
+						/>
+
+						<Text 
+							id="Percentage" 
+							text="{paymentConditions>selectionPercentageFormated}"
+							textAlign="End"
+							width="100%"
+						/>
+						
+						<!--<Text 
+							id="Amount" 
+							text="{paymentConditions>selectionValueTotal}" 
+							visible="{paymentConditions>State/selectionValueTotal/Visible}"
+							textAlign="End"
+							width="100%"
+						/>-->
+
+						<Input 
+							id="Amount"
+							textAlign="End"
+							width="100%" 
+							value="{paymentConditions>selectionValueTotal}"
+							visible="{paymentConditions>State/selectionValueTotal/Visible}" 
+							enabled="{paymentConditions>State/selectionValueTotal/Enabled}"
+							change="onCalculationProposed"
+						>
+						</Input>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+		<VBox>
+			<Toolbar class="proposedCalculationResultToolbar" height="100%">
+				<grid:CSSGrid
+					id="gridPaymentConditionsContainerResult"
+					gridTemplateRows="1fr"
+					gridTemplateColumns="3fr 1fr 1fr"
+				>	
+					<grid:CSSGrid
+						id="gridPaymentConditionsContainerResultStatus"
+						gridTemplateRows="1fr 1fr 1fr 1fr"
+						gridTemplateColumns="1fr"
+						gridGap="0.1rem"
+					>
+						<ObjectStatus
+							id="ValitationProposalTitle" 
+                            state="{proposedCalculation>/State/validationTitle/ValueState}"
+                            text="{proposedCalculation>/validationTitle}"
+							icon="{proposedCalculation>/State/validationTitle/Icon}"
+							visible="{proposedCalculation>/State/validationTitle/Visible}"
+                        />
+
+						
+						<VBox class="margimLeftStatus" visible="{proposedCalculation>/State/validationText/Visible}">
+							<ObjectStatus
+								id="ValitationProposalText"
+								state="{proposedCalculation>/State/validationText/ValueState}"
+								text="{proposedCalculation>/validationText}"
+								icon="{proposedCalculation>/State/validationText/Icon}"
+								visible="{proposedCalculation>/State/validationText/Visible}"
+							/>
+						</VBox>
+
+						<VBox class="margimLeftStatus" visible="{proposedCalculation>/State/validationTextTwo/Visible}">
+							<ObjectStatus
+								id="ValitationProposalTextTwo"
+								state="{proposedCalculation>/State/validationTextTwo/ValueState}"
+								text="{proposedCalculation>/validationTextTwo}"
+								icon="{proposedCalculation>/State/validationTextTwo/Icon}"
+								visible="{proposedCalculation>/State/validationTextTwo/Visible}"
+							/>
+						</VBox>
+
+						<VBox class="margimEnd margimLeftStatus" visible="{proposedCalculation>/State/validationTextThree/Visible}">
+							<ObjectStatus
+								id="ValitationProposalTextThree"
+								state="{proposedCalculation>/State/validationTextThree/ValueState}"
+								text="{proposedCalculation>/validationTextThree}"
+								icon="{proposedCalculation>/State/validationTextThree/Icon}"
+								visible="{proposedCalculation>/State/validationTextThree/Visible}"
+							/>
+						</VBox>
+					</grid:CSSGrid>
+
+					<VBox>
+					</VBox>
+
+
+					<grid:CSSGrid
+						id="gridPaymentConditionsContainerResult1"
+						gridTemplateRows="1fr"
+						gridTemplateColumns="1fr"
+						gridGap="4rem"
+					>
+						<!--<Text 
+							id="PercentageTotal" 
+							text="{proposedCalculation>/percentage}"
+							textAlign="End"
+							width="100%"
+						/>-->
+
+						<Text 
+							id="ValueTotal" 
+							text="{proposedCalculation>/valueTotal}"
+							textAlign="End"
+							width="100%"
+						/>
+					</grid:CSSGrid>
+				</grid:CSSGrid>
+			</Toolbar>
+		</VBox>
+
+		<VBox class="MarginLabelInput">
+			<grid:CSSGrid
+                id="gridPaymentConditionsContainer"
+				class="gridPaymentConditionsContainer"
+                gridTemplateRows="1fr"
+                gridTemplateColumns="1fr 2fr 1fr"
+            >
+				<grid:CSSGrid
+					id="gridPaymentConditionsContent01"
+					gridTemplateRows="1fr"
+					gridTemplateColumns="1fr 1fr 1fr"
+					gridGap="0.5rem"
+				>
+					<CheckBox
+						text="{i18n>paymentConditionsViewPaymentPlan}"
+						selected="{finishProposal>/viewTable/selectionViewPaymentPlan}"
+						enabled="{finishProposal>/viewTable/State/selectionViewPaymentPlan/Enabled}"
+						valueState="{finishProposal>/viewTable/State/selectionViewPaymentPlan/ValueState}"
+						width="100%"
+					>
+					</CheckBox>
+
+					<CheckBox
+						text="{i18n>paymentConditionsViewProposedAnalysis}"
+						selected="{finishProposal>/viewTable/selectionViewProposedAnalysis}"
+						enabled="{finishProposal>/viewTable/State/selectionViewProposedAnalysis/Enabled}"
+						valueState="{finishProposal>/viewTable/State/selectionViewProposedAnalysis/ValueState}"
+						width="100%"
+					>
+					</CheckBox>
+
+					<CheckBox
+						text="{i18n>paymentConditionsAutomaticValidation}"
+						selected="{finishProposal>/viewTable/selectionAutomaticValidation}"
+						enabled="{finishProposal>/viewTable/State/selectionAutomaticValidation/Enabled}"
+						valueState="{finishProposal>/viewTable/State/selectionAutomaticValidation/ValueState}"
+						width="100%"
+						select="onSelectAutomaticValidation"
+					>
+					</CheckBox>
+				</grid:CSSGrid>
+
+				<VBox>
+				</VBox>
+
+				<grid:CSSGrid
+					id="gridPaymentConditionsContent02"
+					class="gridPaymentConditionsContent02"
+					gridTemplateRows="1fr"
+					gridTemplateColumns="1fr 1fr"
+					gridGap="0.5rem"
+				>
+					<Button 
+						text="{i18n>paymentConditionsButtonValidate}" 
+						class="paymentConditionsValidate"
+						type="Unstyled"
+						enabled="{finishProposal>/viewTable/State/selectionButtonValidate/Enabled}"
+						press="onValidateProposal"
+					/>
+
+					<Button 
+						text="{i18n>paymentConditionsButtonPattern}" 
+						class="paymentConditionsPattern"
+						type="Unstyled" 
+						press="onResetPaymentConditions"
+					/>
+
+					<!--<MenuButton 
+						class="paymentConditionsMenu" 
+						icon="sap-icon://menu2" 
+						menuPosition="BeginCenter"
+					>
+						<menu>
+							<Menu>
+								<MenuItem text="{i18n>paymentConditionsMenuZero}" />
+								<MenuItem text="{i18n>paymentConditionsMenuSuggestProposal}" />
+								<MenuItem text="{i18n>paymentConditionsMenuInCash}" />
+								<MenuItem text="{i18n>paymentConditionsMenuSequentialDate}" />
+							</Menu>
+						</menu>
+					</MenuButton>-->
+				</grid:CSSGrid>
+			</grid:CSSGrid>
+		</VBox>
+
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.paymentConditions.PaymentPlan" 
+			type="XML"
+		/>
+
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.paymentConditions.ResultProposedAnalysis" 
+			type="XML"
+		/>
+
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.paymentConditions.ProposalEvaluation" 
+			type="XML"
+		/>
+
+		<core:Fragment 
+			fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.paymentConditions.GraphicPaymentPlan" 
+			type="XML"
+		/>
+    </VBox>
+</core:FragmentDefinition>

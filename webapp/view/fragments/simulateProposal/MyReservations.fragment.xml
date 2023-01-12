@@ -1,0 +1,61 @@
+<core:FragmentDefinition 
+    controllerName="com.itsgroup.brz.enterprises.controller.SimulateProposal"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table">
+    	<table:Table rows="{logsFile>/logs}" visibleRowCount="2" selectionMode="None">
+		<table:noData><Text text="{i18n>myReservationsTableNoItems}"/></table:noData>
+		<table:columns>
+			<!--Companies-->
+			<table:Column width="15rem" hAlign="Center">
+				<Label text="{i18n>myReservationsEnterprise}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+			<!--Companies-->
+			<table:Column width="8rem" hAlign="Center">
+				<Label text="{i18n>myReservationsBlock}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+			<!--Schedule-->
+			<table:Column width="10rem" hAlign="Center">
+				<Label text="{i18n>myReservationsUnity}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+			<!--Schedule-->
+			<table:Column width="8rem" hAlign="Center">
+				<Label text="{i18n>myReservationsOrder}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+			<!--Exeception-->
+			<table:Column width="12rem"  hAlign="Center">
+				<Label text="{i18n>myReservationsBookingDate}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+			<!--Exeception-->
+			<table:Column width="10rem" hAlign="Center">
+				<Label text="{i18n>myReservationsExpiresIn}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+
+			<!--Vendor-->
+			<table:Column width="8rem" hAlign="Center">
+				<Label text="{i18n>myReservationsActions}"/>
+				<table:template>
+					<Text text=""/>
+				</table:template>
+			</table:Column>
+		</table:columns>
+	</table:Table>
+</core:FragmentDefinition>

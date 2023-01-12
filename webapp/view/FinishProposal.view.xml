@@ -1,0 +1,283 @@
+<mvc:View
+	controllerName="com.itsgroup.brz.enterprises.controller.FinishProposal"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	displayBlock="true"
+>
+	<NavContainer id="oNavContainerFinishProposal">
+		<pages>
+			<Page
+				title="{i18n>finishProposalTitle}"
+				backgroundDesign="Solid"
+				titleLevel="H1"
+			>
+				<Panel 
+					backgroundDesign="Transparent"
+					height="100%"
+					class="sapUiResponsiveContentPadding sapUiResponsivePadding--header"
+				>	
+					<core:Fragment 
+						fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.ReviewTableEnterprises" 
+						type="XML"
+					/>
+					
+					<Toolbar
+						width="100%"
+						class="sapUiSmallMarginTop"
+					>
+						<Title
+							text="{i18n>finishProposalTitle}"
+							titleStyle="H3"
+						/>
+						<ToolbarSpacer/>
+					</Toolbar>
+
+					<core:Fragment 
+						fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.Broker" 
+						type="XML"
+					/>
+
+					<core:Fragment 
+						fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.Proponent" 
+						type="XML"
+					/>
+							
+					<core:Fragment 
+						fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.ProposalInformation" 
+						type="XML"
+					/>
+
+					<core:Fragment 
+						fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.PaymentConditions"
+						type="XML"
+					/>
+				</Panel>
+
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<ObjectStatus
+                            text="{finishProposal>/messageStatus}"
+                            state="Warning"
+                            icon="sap-icon://message-warning"
+							visible="{finishProposal>/State/messageStatus/Visible}"
+	                    />
+						<VBox class="buttonSaveProposal">
+							<Button
+								text="{i18n>finishProposalButtonSaveProposal}"
+								type="Accept"
+								visible="{proposalEvaluation>/buttonSaveProposal}"
+								press="onSaveProposal"
+							/>
+						</VBox>
+
+						<VBox class="buttonSaveProposal">
+							<Button
+								text="{i18n>finishProposalButtonUpdateProposal}"
+								type="Accept"
+								visible="{proposalEvaluation>/buttonUpdateProposal}"
+								press="onUpdateProposal"
+							/>
+						</VBox>
+
+						<VBox>
+							<CheckBox
+								text="{i18n>finishProposalCheckBoxTradeClosed}"
+								selected="{finishProposal>/selectionValidatedSimulate}"
+								visible="{=${proposalEvaluation>/buttonSaveProposal} === true ? true : ${proposalEvaluation>/buttonUpdateProposal} === true ? true : false}"
+								select="onSelectValidatedSimulate"
+							/>
+						</VBox>
+						
+						<!--visible="{paymentPlan>/buttonPrintPaymentPlan}"-->
+						<VBox class="buttonSaveProposal">
+							<Button
+								text="{i18n>finishProposalButtonPrintPaymentPlan}"
+								visible="{paymentPlan>/buttonPrintPaymentPlan}"
+								press="onPrintPaymentPlan"
+							/>
+						</VBox>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="proponentPage" title="{i18n>proponentItemName}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button 
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveProponent"
+						/>
+						<Button 
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditProponent"
+						/>
+						<Button 
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemProponent"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="attorneyPage" title="{i18n>proponentAttorneyTitle}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button 
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveAttorney"
+						/>
+						<Button 
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditAttorney"
+						/>
+						<Button 
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemAttorney"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="financialOfficerPage" title="{i18n>proponentFinancialOfficerTitle}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button 
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveFinancialOfficer"
+						/>
+						<Button 
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditFinancialOfficer"
+						/>
+						<Button 
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemFinancialOfficer"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="guarantorPage" title="{i18n>proponentGuarantorTitle}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button 
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveGuarantor"
+						/>
+						<Button 
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditGuarantor"
+						/>
+						<Button 
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemGuarantor"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<!--.............................................................................................-->
+			<!--......................... PESSOA JURÍDICA ...................................................-->
+			<!--.............................................................................................-->
+			<Page id="legalRepresentativePage" title="{i18n>proponentLegalRepresentativeTitle}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button 
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveLegalRepresentative"
+						/>
+						<Button 
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditLegalRepresentative"
+						/>
+						<Button 
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemLegalRepresentative"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="legalPersonGuarantorPage" title="{i18n>proponentGuarantorTitle}" titleLevel="H3">
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button
+							text="{i18n>proponentButtonSave}"
+							type="Emphasized"
+							enabled="{involvedParties>/bSave}"
+							visible="{involvedParties>/bSave}"
+							press="onSaveGuarantor"
+						/>
+						<Button
+							text="{i18n>proponentButtonEdit}"
+							type="Emphasized"
+							visible="{involvedParties>/bEdit}"
+							press="onEditGuarantor"
+						/>
+						<Button
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onCloseItemGuarantor"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+
+			<Page id="changeUnitPage" backgroundDesign="List" title="{i18n>availabilityMapTitle}" titleLevel="H3">
+				<core:Fragment 
+					fragmentName="com.itsgroup.brz.enterprises.view.fragments.availabilityMap.AvailabilityMapLayout" 
+					type="XML"
+				/>
+				
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button
+							text="{i18n>proponentButtonCancel}"
+							type="Default"
+							press="onBackChangeUnit"
+						/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

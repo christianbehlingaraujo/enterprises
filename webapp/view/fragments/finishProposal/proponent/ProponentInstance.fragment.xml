@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm 
+        id="proponentInstance" 
+        editable="true"
+        layout="ResponsiveGridLayout"
+        width="100%"
+    >
+        <VBox>
+            <core:Fragment 
+                fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.RequiredData" 
+                type="XML"
+            />
+
+            <core:Fragment 
+                fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.AdditionalData" 
+                type="XML"
+            />
+
+            <VBox id="physicalPerson">
+                <core:Fragment 
+                    fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.FinancialInformation" 
+                    type="XML"
+                />
+
+                <core:Fragment 
+                    fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.BiddersProfessionalData" 
+                    type="XML"
+                />
+
+                <core:Fragment 
+                    fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.HomeAddress" 
+                    type="XML"
+                />
+
+                <VBox id="SpousePhysicalPerson" visible="false">
+                    <core:Fragment 
+                        fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.spouse.BiddersSpouseData" 
+                        type="XML"
+                    />
+
+                    <core:Fragment 
+                        fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.physicalPerson.spouse.ProfessionalDataBidderSpouse" 
+                        type="XML"
+                    />
+                </VBox>
+            </VBox>
+
+            <VBox id="legalPerson" visible="false">
+                <core:Fragment 
+                    fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.legalPerson.FinancialInformationCompany" 
+                    type="XML"
+                />
+                
+                <core:Fragment 
+                    fragmentName="com.itsgroup.brz.enterprises.view.fragments.finishProposal.proponent.legalPerson.CompanyAddress" 
+                    type="XML"
+                />
+            </VBox>
+            
+        </VBox>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,71 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop" visible="false">
+
+        <Title text="{i18n>proponentBillingAddressTitle}" titleStyle="H4"/>
+
+        <grid:CSSGrid
+		    id="gridBillingAddressContainer01"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="1fr 5fr 1fr"
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentLabelCEP}"/>
+                <MaskInput
+					mask="99.999-999"
+					placeholderSymbol="_"
+					placeholder="00.000-000"
+					width="100%"
+				>
+				</MaskInput>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelPublicPlace}"/>
+                <Input placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderPublicPlace}"/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNumber}"/>
+                <Input type="Number" placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderNumber}"/>
+            </VBox>
+        </grid:CSSGrid>
+
+        <grid:CSSGrid
+		    id="gridBillingAddressContainer02"
+			class="sapUiSmallMarginTop"
+			gridTemplateRows="1fr"
+			gridTemplateColumns="2fr 2fr 2fr 1fr" 
+			gridGap="0.5rem"
+		>
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelComplement}"/>
+                <Input placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderComplement}"/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelNeighborhood}"/>
+                <Input />
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelCounty}"/>
+                <Input placeholder="{i18n>proponentBiddersProfessionalDataPlaceholderCounty}"/>
+            </VBox>
+
+            <VBox>
+                <Label text="{i18n>proponentBiddersProfessionalDataLabelUF}"/>
+                <ComboBox
+                    selectedKey="{}"
+                >
+                    
+                </ComboBox>
+            </VBox>
+        </grid:CSSGrid>
+    </VBox>
+</c:FragmentDefinition>

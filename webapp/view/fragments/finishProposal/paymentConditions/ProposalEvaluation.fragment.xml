@@ -1,0 +1,47 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:table="sap.ui.table"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <VBox class="sapUiSmallMarginTop">
+        <Title text="{i18n>proposalEvaluationTitle}" titleStyle="H4"/>
+
+        <table:Table rows="{proposalEvaluation>/items}" visibleRowCount="1" selectionMode="None" width="100%" class="sapUiSmallMarginTop">
+            <table:noData><Text text="{i18n>myReservationsTableNoItems}"/></table:noData>
+            <table:columns>
+                <table:Column width="10%" hAlign="Center">
+                    <Label text="{i18n>finishProposalNetValue}"/>
+                    <table:template>
+                        <Text text="{proposalEvaluation>unitValue}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="10%" hAlign="Center">
+                    <Label text="{proposalEvaluation>/discountAdditionText}"/>
+                    <table:template>
+                        <Text text="{proposalEvaluation>discountAddition}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="10%" hAlign="Center">
+                    <Label text="{i18n>paymentConditionsProposalValue}"/>
+                    <table:template>
+                        <Text text="{proposalEvaluation>proposalValue}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column width="20%" hAlign="Center">
+                    <Label text="{i18n>paymentConditionsFinalEvaluation}"/>
+                    <table:template>
+                        <ObjectStatus
+                            icon="{proposalEvaluation>State/finalEvaluation/Icon}"
+                            state="{proposalEvaluation>State/finalEvaluation/ValueState}"
+                            text="{proposalEvaluation>finalEvaluation}"
+                        />
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+    </VBox>
+</c:FragmentDefinition>
